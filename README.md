@@ -20,7 +20,11 @@ realsense d455 + Boson 320 to generate thermal pointcloud.
 ```bash
 v4l2-ctl -d /dev/video- --all
 ```
-Change the port number at row51 in `fusion_new.cpp`
+Change the port at row 52 in `fusion_new.cpp`
+```c++
+ sprintf(video, "/dev/video8");
+```
+
 3. Edit the CMakeLists.txt
 
 change the librealsense2.so path
@@ -28,7 +32,9 @@ change the librealsense2.so path
 target_link_libraries(fusion
         "/home/gg/librealsense/build/librealsense2.so"
 ```
+
 4. navigate to the root folder.
+
 ```bash
 mkdir build && cd build
 cmake ..
