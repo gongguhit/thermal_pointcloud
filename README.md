@@ -22,12 +22,10 @@ v4l2-ctl -d /dev/video- --all
 ```
 Change the port number at row51 in `fusion_new.cpp`
 3. Edit the CMakeLists.txt
+
+change the librealsense2.so path
 ```
-# change the librealsense2.so path
-target_link_libraries(fusion
-     ** "/home/gg/librealsense/build/librealsense2.so"**
-        ${PCL_LIBRARIES}
-        ${OpenCV_LIBS}
+      "/home/gg/librealsense/build/librealsense2.so"
 )
 ```
 4. navigate to the root folder.
