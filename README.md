@@ -35,8 +35,4 @@ cmake ..
 make
 ```
 ## Example
-```HTML
-<video width="320" height="240" controls>
-    <source src="video/thermalpcd.mp4" type="video/mp4">
-</video>
-```
+![](video/thermalpcd.gif)
