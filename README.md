@@ -25,8 +25,8 @@ Change the port number at row51 in `fusion_new.cpp`
 
 change the librealsense2.so path
 ```
-      "/home/gg/librealsense/build/librealsense2.so"
-)
+target_link_libraries(fusion
+        "/home/gg/librealsense/build/librealsense2.so"
 ```
 4. navigate to the root folder.
 ```bash
