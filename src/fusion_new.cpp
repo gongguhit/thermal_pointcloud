@@ -342,6 +342,13 @@ int main(int argc, char** argv )
         {
             continue;
         }
+
+        // try not to make new cv::Mat in each loop 
+        // define them only onces and try to reuse them in every iteration
+        // otherwise, it would slow down the whole iteration 
+        
+        
+        
         // 创建opencv类型，并传入数据
         Mat aligned_depth_image(Size(depth_w, depth_h), CV_16UC1, (void *)aligned_depth_frame.get_data(), Mat::AUTO_STEP);
         Mat aligned_color_image(Size(color_w, color_h), CV_8UC3, (void *)aligned_color_frame.get_data(), Mat::AUTO_STEP);
@@ -350,14 +357,25 @@ int main(int argc, char** argv )
         cvtColor(aligned_color_image, aligned_color_image, COLOR_RGB2BGR);
 
 
+
+        // try not to make new cv::Mat in each loop 
+        // same as above
         Mat thermal_data;
         thermal_data = thermal16_linear.clone();
         resize(thermal_data,thermal_data,Size(640,480));
 
         // Below for projection
 
+        // try not to make new cv::Mat in each loop 
+        // same as above
+        // if all the cv::Mat and vector<Point2d> will remain same size in every iteration
+        // then please define them out of loop anď resue them
+
         Mat thermal_img_gray, thermalImage, depthdata, rgbImage, depth_colormap, RGBImage;
         Mat real_point_depth;
+
+        // i'm sure the size of vector<Point2d> imagePoints will remain same 
+        // try to define out of loop and repopulate in each iteration
         vector<Point2d> imagePoints;
         Mat projected_image, temp_colormap;
         Mat high_temp_image, temp_mask;
@@ -383,6 +401,10 @@ int main(int argc, char** argv )
         merge(real_point_depth_temp, 3,real_point_depth);
         Mat real_point = real_point_depth.reshape(3, 307200);
 
+
+        // i'm sure the size of vector<Point3d> real_point3d will remain same 
+        // try to define out of loop and repopulate in each iteration
+
         // Then need to transform the 3 channels points to Point3d
         vector<Point3d> real_point3d;
         real_point3d = Mat2Point(real_point);
@@ -395,10 +417,18 @@ int main(int argc, char** argv )
 
 
         projectPoints(real_point3d, relative_Rvct, relative_T, thermalIntrinsic, thermalDistortion, imagePoints);
+
+        // if the vector<Point2i> imagePoints_int will nerver change try to 
+        // define out of loop and then call the function and pass the argument by reference
+        // to avoid unneccessary copying   
         vector<Point2i> imagePoints_int = Pointf2i(imagePoints);
 
 
+        // if the projected_image will nerver change try to 
+        // define out of loop and then call the function and pass the argument by reference
+        // to avoid unneccessary copying   
         projected_image = testfunc(imagePoints_int,thermal_data,bad_obj_points);
+
 
         // Filter the high temperature regieon
         high_temp_image = projected_image.clone();
@@ -439,6 +469,9 @@ int main(int argc, char** argv )
             }
         }
 
+        // if the cloud will nerver change try to 
+        // define out of loop and then call the function and pass the argument by reference
+        // to avoid unneccessary copying   
         cloud = pcl_generator(temp_colormap,aligned_depth_image);
         viewer->removeAllPointClouds();
         viewer->addPointCloud(cloud,"Cloud Viewer");
