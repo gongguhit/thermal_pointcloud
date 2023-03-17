@@ -1,4 +1,4 @@
-# Install script for directory: /home/gg/Downloads/calibcpp/realsense_boson_fusion
+# Install script for directory: /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/gg/Downloads/calibcpp/realsense_boson_fusion/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
