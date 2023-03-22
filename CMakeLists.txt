@@ -29,6 +29,7 @@ include_directories(
 	)
 # Add executable --------------------------------------------------------------
 add_executable(fusion ${PROJECT_SOURCE_DIR}/fusion_new.cpp)
+add_executable(match ${PROJECT_SOURCE_DIR}/match_region.cpp)
 
 # Link libraries --------------------------------------------------------------
 target_link_libraries(fusion
@@ -36,4 +37,7 @@ target_link_libraries(fusion
         ${PCL_LIBRARIES}
         ${OpenCV_LIBS}
 )
+target_link_libraries(match
+		${OpenCV_LIBS}
+		)
 

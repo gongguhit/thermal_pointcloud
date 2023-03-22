@@ -1,15 +1,6 @@
 #include "include/fusion_new.h"
 
-int* gen_bad_points(vector<Point3d> real_point3d){
-    static int bad_obj_points[307200];
-    for (int i = 0; i < 307200; i++) {
-        if (real_point3d[i].z == 0) {
-            bad_obj_points[i] = 1;
-        }
-        else bad_obj_points[i] = 0;
-    }
-    return bad_obj_points;
-}
+
 
 int main(int argc, char** argv )
 {
@@ -287,6 +278,18 @@ int main(int argc, char** argv )
 
     //define pointcloud data
     pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZRGB>);
+//    cloud->height = 480;
+//    cloud->width = 640;
+//    cloud->resize(640*480);
+
+    cloud->height = 280;
+    cloud->width = 390;
+    cloud->resize(390*280);
+
+    // define filter
+
+
+
     // set viewer parameter
     viewer->setCameraPosition(0, 0, -3.0, 0, -1, 0);
     viewer->addCoordinateSystem(1);
@@ -300,10 +303,13 @@ int main(int argc, char** argv )
     vector<Point2d> imagePoints;
     Mat projected_image, temp_colormap;
     Mat high_temp_image, temp_mask;
+    // Cutted Matrix
+    Mat cut_img(Size(280,340),CV_8UC3,Scalar(0,0,0));
+    Mat cut_depth(Size(280,340),CV_16UC1,Scalar(0));
 
 //    int bad_obj_points[307200];
     int* bad_obj_points;
-    int temp_thres = 120;
+    int temp_thres = 130;
     int max_temp;
 
     Mat w_x;
@@ -395,6 +401,9 @@ int main(int argc, char** argv )
         thermal_data = thermal16_linear.clone();
         resize(thermal_data,thermal_data,Size(640,480));
 
+//        imwrite("boson_output.jpg",thermal_data);
+//        imwrite("realsense_output.jpg",aligned_color_image);
+
         // Below for projection
 
         // try not to make new cv::Mat in each loop 
@@ -456,6 +465,8 @@ int main(int argc, char** argv )
         // to avoid unneccessary copying   
         projected_image = testfunc(imagePoints_int,thermal_data,bad_obj_points);
 
+        // detect the thermal region
+        cut_wrong_edge(projected_image,100,380,150,490);
 
         // Filter the high temperature regieon
         high_temp_image = projected_image.clone();
@@ -496,15 +507,21 @@ int main(int argc, char** argv )
             }
         }
 
+        // Here cut the image
+        create_new_Mat(temp_colormap,cut_img,100,380,150,490);
+        create_new_Mat_depth(aligned_depth_image,cut_depth,100,380,150,490);
+
         // if the cloud will nerver change try to 
         // define out of loop and then call the function and pass the argument by reference
         // to avoid unneccessary copying   
-        cloud = pcl_generator(temp_colormap,aligned_depth_image);
-//        pcl_generator(cloud,temp_colormap,aligned_depth_image);
+//        cloud = pcl_generator(temp_colormap,aligned_depth_image);
+//        pcl_generator_mudd(temp_colormap,aligned_depth_image, cloud);
+        pcl_generator(cloud,cut_img,cut_depth);
+
         viewer->removeAllPointClouds();
         viewer->addPointCloud(cloud,"Cloud Viewer");
         viewer->updatePointCloud(cloud,"Cloud Viewer");
-        viewer->spinOnce(0.000000000001);
+        viewer->spinOnce(0.001);
 
     }
 
