@@ -281,12 +281,15 @@ int main(int argc, char** argv )
 //    cloud->height = 480;
 //    cloud->width = 640;
 //    cloud->resize(640*480);
+    // define point cloud filter
+    pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_filtered(new pcl::PointCloud<pcl::PointXYZRGB>);
 
     cloud->height = 280;
     cloud->width = 390;
     cloud->resize(390*280);
 
     // define filter
+    pcl::PassThrough<pcl::PointXYZRGB> pass;
 
 
 
@@ -309,7 +312,7 @@ int main(int argc, char** argv )
 
 //    int bad_obj_points[307200];
     int* bad_obj_points;
-    int temp_thres = 130;
+    int temp_thres = 140;
     int max_temp;
 
     Mat w_x;
@@ -518,9 +521,21 @@ int main(int argc, char** argv )
 //        pcl_generator_mudd(temp_colormap,aligned_depth_image, cloud);
         pcl_generator(cloud,cut_img,cut_depth);
 
+        // add filter
+        pass.setInputCloud(cloud);
+        pass.setFilterFieldName("y");
+        pass.setFilterLimits(0.4,0.9);
+        pass.setFilterFieldName("x");
+        pass.setFilterLimits(-0.8,0.65);
+        pass.filter(*cloud_filtered);
+
         viewer->removeAllPointClouds();
         viewer->addPointCloud(cloud,"Cloud Viewer");
         viewer->updatePointCloud(cloud,"Cloud Viewer");
+
+        // visualize pass through filter results
+//        viewer->addPointCloud(cloud_filtered,"Cloud Viewer");
+//        viewer->updatePointCloud(cloud_filtered,"Cloud Viewer");
         viewer->spinOnce(0.001);
 
     }
