@@ -1,0 +1,124 @@
+{
+	"BUILD_DIR" : "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen",
+	"CMAKE_BINARY_DIR" : "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop",
+	"CMAKE_EXECUTABLE" : "/usr/bin/cmake",
+	"CMAKE_SOURCE_DIR" : "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop",
+	"HEADERS" : 
+	[
+		[
+			"/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/QvtkTest.h",
+			"MU",
+			"EWIEGA46WW/moc_QvtkTest.cpp"
+		],
+		[
+			"/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/boson320.h",
+			"MU",
+			"EWIEGA46WW/moc_boson320.cpp"
+		],
+		[
+			"/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/calcpcd.h",
+			"MU",
+			"EWIEGA46WW/moc_calcpcd.cpp"
+		],
+		[
+			"/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/dependencies.h",
+			"MU",
+			"EWIEGA46WW/moc_dependencies.cpp"
+		],
+		[
+			"/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/fusion_new.h",
+			"MU",
+			"EWIEGA46WW/moc_fusion_new.cpp"
+		],
+		[
+			"/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/rsd455.h",
+			"MU",
+			"EWIEGA46WW/moc_rsd455.cpp"
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : 
+	[
+		"DISABLE_LIBUSB_1_0",
+		"DISABLE_PCAP",
+		"DISABLE_PNG",
+		"QT_CORE_LIB",
+		"QT_GUI_LIB",
+		"QT_NO_DEBUG",
+		"QT_WIDGETS_LIB",
+		"qh_QHpointer",
+		"vtkRenderingContext2D_AUTOINIT=1(vtkRenderingContextOpenGL2)",
+		"vtkRenderingCore_AUTOINIT=3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)"
+	],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build",
+		"/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop",
+		"/usr/local/include/vtk-8.2",
+		"/usr/local/include/opencv",
+		"/usr/local/include/pcl-1.11",
+		"/usr/include/eigen3",
+		"/usr/include/ni",
+		"/usr/include/openni2",
+		"/opt/Qt5.14.2/5.14.2/gcc_64/include",
+		"/opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets",
+		"/opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui",
+		"/opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore",
+		"/opt/Qt5.14.2/5.14.2/gcc_64/mkspecs/linux-g++",
+		"/usr/include",
+		"/usr/local/include",
+		"/usr/include/c++/9",
+		"/usr/include/x86_64-linux-gnu/c++/9",
+		"/usr/include/c++/9/backward",
+		"/usr/lib/gcc/x86_64-linux-gnu/9/include",
+		"/usr/include/x86_64-linux-gnu"
+	],
+	"MOC_MACRO_NAMES" : [ "Q_OBJECT", "Q_GADGET", "Q_NAMESPACE", "Q_NAMESPACE_EXPORT" ],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : true,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"/usr/bin/c++",
+		"-dM",
+		"-E",
+		"-c",
+		"/usr/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 10,
+	"PARSE_CACHE_FILE" : "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/CMakeFiles/QvtkTest_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/opt/Qt5.14.2/5.14.2/gcc_64/bin/moc",
+	"QT_UIC_EXECUTABLE" : "/opt/Qt5.14.2/5.14.2/gcc_64/bin/uic",
+	"QT_VERSION_MAJOR" : 5,
+	"SETTINGS_FILE" : "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/CMakeFiles/QvtkTest_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[
+			"/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/QvtkTest.cpp",
+			"MU"
+		],
+		[
+			"/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/main.cpp",
+			"MU"
+		]
+	],
+	"UIC_OPTIONS" : [],
+	"UIC_SEARCH_PATHS" : [],
+	"UIC_SKIP" : [],
+	"UIC_UI_FILES" : [],
+	"VERBOSITY" : 0
+}

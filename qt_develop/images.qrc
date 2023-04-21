@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>icons/imat1.png</file>
+        <file>icons/imat2.png</file>
+        <file>icons/polyu.jpg</file>
+        <file>icons/romilogo.jpeg</file>
+        <file>icons/icon.jpg</file>
+    </qresource>
+</RCC>

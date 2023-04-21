@@ -1,0 +1,26 @@
+{
+	"BUILD_DIR" : "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen",
+	"CMAKE_BINARY_DIR" : "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop",
+	"CMAKE_SOURCE_DIR" : "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop",
+	"INCLUDE_DIR" : "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/include",
+	"INPUTS" : 
+	[
+		"/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/icons/imat2.png",
+		"/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/icons/imat1.png",
+		"/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/icons/romilogo.jpeg",
+		"/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/icons/icon.jpg",
+		"/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/icons/polyu.jpg"
+	],
+	"LOCK_FILE" : "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/CMakeFiles/QvtkTest_autogen.dir/AutoRcc_images_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "images" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_images.cpp",
+	"RCC_EXECUTABLE" : "/opt/Qt5.14.2/5.14.2/gcc_64/bin/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/CMakeFiles/QvtkTest_autogen.dir/AutoRcc_images_EWIEGA46WW_Used.txt",
+	"SOURCE" : "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/images.qrc",
+	"VERBOSITY" : 0
+}

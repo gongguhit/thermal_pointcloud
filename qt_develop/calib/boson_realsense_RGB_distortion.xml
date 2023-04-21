@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<opencv_storage>
+<boson_realsense_RGB_distortion type_id="opencv-matrix">
+  <rows>1</rows>
+  <cols>5</cols>
+  <dt>d</dt>
+  <data>
+    -3.1808740541685490e-02 6.6910596464205456e-03
+    3.4183824980451964e-04 -5.1141762667447259e-03
+    8.1988362058329323e-02</data></boson_realsense_RGB_distortion>
+</opencv_storage>

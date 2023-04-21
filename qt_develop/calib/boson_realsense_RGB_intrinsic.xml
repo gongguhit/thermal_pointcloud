@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<opencv_storage>
+<boson_realsense_RGB_intrinsic type_id="opencv-matrix">
+  <rows>3</rows>
+  <cols>3</cols>
+  <dt>d</dt>
+  <data>
+    3.8103305767226504e+02 0. 3.1673068986011896e+02 0.
+    3.7920232540445494e+02 2.3369250238052840e+02 0. 0. 1.</data></boson_realsense_RGB_intrinsic>
+</opencv_storage>
