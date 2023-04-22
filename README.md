@@ -42,3 +42,9 @@ make
 ```
 ## Example
 ![](video/thermalpcd.gif)
+
+## Qt visualizer for thermal point cloud
+### Environment
+- PCL 1.11.1
+- Qt 5.14
+- VTK 8.2.0
