@@ -217,6 +217,33 @@ QvtkTest_autogen/mocs_compilation.cpp.s:
 	$(MAKE) -f CMakeFiles/QvtkTest.dir/build.make CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.s
 .PHONY : QvtkTest_autogen/mocs_compilation.cpp.s
 
+global.o: global.cpp.o
+
+.PHONY : global.o
+
+# target to build an object file
+global.cpp.o:
+	$(MAKE) -f CMakeFiles/QvtkTest.dir/build.make CMakeFiles/QvtkTest.dir/global.cpp.o
+.PHONY : global.cpp.o
+
+global.i: global.cpp.i
+
+.PHONY : global.i
+
+# target to preprocess a source file
+global.cpp.i:
+	$(MAKE) -f CMakeFiles/QvtkTest.dir/build.make CMakeFiles/QvtkTest.dir/global.cpp.i
+.PHONY : global.cpp.i
+
+global.s: global.cpp.s
+
+.PHONY : global.s
+
+# target to generate assembly for a file
+global.cpp.s:
+	$(MAKE) -f CMakeFiles/QvtkTest.dir/build.make CMakeFiles/QvtkTest.dir/global.cpp.s
+.PHONY : global.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -263,6 +290,9 @@ help:
 	@echo "... QvtkTest_autogen/mocs_compilation.o"
 	@echo "... QvtkTest_autogen/mocs_compilation.i"
 	@echo "... QvtkTest_autogen/mocs_compilation.s"
+	@echo "... global.o"
+	@echo "... global.i"
+	@echo "... global.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

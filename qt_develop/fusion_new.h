@@ -18,4 +18,5 @@ using namespace std;
 // boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer(new pcl::visualization::PCLVisualizer("3D Viewer"));
 
 
+
 #endif //FUSION_FUSION_NEW_H

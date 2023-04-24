@@ -55,7 +55,7 @@ include CMakeFiles/QvtkTest_autogen.dir/progress.make
 
 CMakeFiles/QvtkTest_autogen:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target QvtkTest"
-	/usr/bin/cmake -E cmake_autogen /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/CMakeFiles/QvtkTest_autogen.dir/AutogenInfo.json ""
+	/usr/bin/cmake -E cmake_autogen /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/CMakeFiles/QvtkTest_autogen.dir/AutogenInfo.json Debug
 
 QvtkTest_autogen: CMakeFiles/QvtkTest_autogen
 QvtkTest_autogen: CMakeFiles/QvtkTest_autogen.dir/build.make

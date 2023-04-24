@@ -1,7 +1,8 @@
 #include "QvtkTest.h"
 #include "fusion_new.h"
-#include <QDebug>
-#include <QTimer>
+
+
+
 
 QvtkTest::QvtkTest(QWidget *parent) : QWidget(parent) {
   ui.setupUi(this);
@@ -10,7 +11,8 @@ QvtkTest::QvtkTest(QWidget *parent) : QWidget(parent) {
 //  pcl::PointCloud<pcl::PointXYZRGB>::Ptr point_cloud_ptr(
 //      new pcl::PointCloud<pcl::PointXYZRGB>);
   // cloud_ptr类内初始化
-  point_cloud_ptr.reset(new pcl::PointCloud<pcl::PointXYZRGB>());
+//  point_cloud_ptr.reset(new pcl::PointCloud<pcl::PointXYZRGB>());
+  // sample points import
   std::uint8_t r(255), g(15), b(15);
   for (float z(-1.0); z <= 1.0; z += 0.05) {
     for (float angle(0.0); angle <= 360.0; angle += 5.0) {
@@ -57,18 +59,22 @@ QvtkTest::QvtkTest(QWidget *parent) : QWidget(parent) {
   viewer->addCoordinateSystem(1.0);
   viewer->initCameraParameters();
 
+  // Here to attempt automatic refreshing pointcloud 22/April
+
+  timer = new QTimer(this);
+  connect(timer,&QTimer::timeout,this,[=](){QvtkTest::updateOpenGLWidget(viewer,point_cloud_ptr);});
+  timer->start(50);
+
   // connect push_button
 
-  connect(ui.pushButton_pcd,&QPushButton::clicked,this,[=](){QvtkTest::thermal_rs_stream(point_cloud_ptr);});
+//  connect(ui.pushButton_pcd,&QPushButton::clicked,this,[=](){QvtkTest::thermal_rs_stream(point_cloud_ptr);});
+  connect(ui.pushButton_pcd,&QPushButton::clicked,this,[=](){QvtkTest::slotPushButtonPcd();});
   connect(ui.pushButton_stop,&QPushButton::clicked,this,[=](){QvtkTest::thermal_rs_stream_close();});
- // Here to attempt automatic refreshing pointcloud 22/April
-  QTimer *timer = new QTimer(this);
 
-  connect(timer,&QTimer::timeout,ui.openGLWidget,[=](){SLOT(updateOpenGLWidget(viewer,point_cloud_ptr));});
+
+
   // set framerate = 20
-  int frameRate = 20;
-  timer->setInterval(1000 / frameRate);
-  timer->start();
+
 
   // simply visualize the sample clouds
 //  viewer->removeAllPointClouds();
@@ -80,31 +86,43 @@ QvtkTest::QvtkTest(QWidget *parent) : QWidget(parent) {
 }
 
 void QvtkTest::initialVtkWidget() {
-  viewer.reset(new pcl::visualization::PCLVisualizer("viewer", false));
+//  viewer.reset(new pcl::visualization::PCLVisualizer("viewer", false));
   vtkNew<vtkGenericOpenGLRenderWindow> window;
   window->AddRenderer(viewer->getRendererCollection()->GetFirstRenderer());
   ui.openGLWidget->SetRenderWindow(window.Get());
+  viewer->setCameraPosition(0, 0, -3.0, 0, -1, 0);
   viewer->setupInteractor(ui.openGLWidget->GetInteractor(),
                           ui.openGLWidget->GetRenderWindow());
   ui.openGLWidget->update();
 }
 
-void QvtkTest::thermal_rs_stream(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_cloud_ptr){
-    int ret;
+void QvtkTest::thermal_rs_stream_close(){
+    pcd_viewer_running = false;
+//    qDebug() << pcd_viewer_running;
+}
+void QvtkTest::updateOpenGLWidget(boost::shared_ptr<pcl::visualization::PCLVisualizer> &viewer,pcl::PointCloud<pcl::PointXYZRGB>::Ptr point_cloud_ptr)
+{
+    pcl::visualization::PointCloudColorHandlerRGBField<pcl::PointXYZRGB> color(point_cloud_ptr);
+    viewer->removeAllPointClouds();
+    viewer->addPointCloud<pcl::PointXYZRGB>(point_cloud_ptr, color, "pclviewer");
+//    viewer->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE,3,"pclviewer");
+//    viewer->setupInteractor(ui.openGLWidget->GetInteractor(),
+//                            ui.openGLWidget->GetRenderWindow());
+//    viewer->updatePointCloud(point_cloud_ptr,color,"pclviewer");
+//    viewer->resetCamera();
+//    qDebug() << "Point cloud updated";
+    ui.openGLWidget->update();
+}
+
+void thermal_rs_stream_thread(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_cloud_ptr){
     int fd;
     struct v4l2_capability cap;
     long frame=0;     // First frame number enumeration
     char video[20];   // To store Video Port Device
-    char label[50];   // To display the information
     char thermal_sensor_name[20];  // To store the sensor name
-    char filename[60];  // PATH/File_count
-    char folder_name[30];  // To store the folder name
-    char video_frames_str[30];
     // Default Program options
     int  video_mode=RAW16;
     int  video_frames=0;
-    int  zoom_enable=0;
-    int  record_enable=0;
     sensor_types my_thermal=Boson320;
 
     //input calibration data
@@ -125,10 +143,7 @@ void QvtkTest::thermal_rs_stream(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_c
     Rodrigues(relative_R,relative_Rvct);
 
 
-    float fx = rgbIntrinsic.at<double>(0,0);
-    float fy = rgbIntrinsic.at<double>(1,1);
-    float cx = rgbIntrinsic.at<double>(0,2);
-    float cy = rgbIntrinsic.at<double>(1,2);
+
 
     // To record images
     std::vector<int> compression_params;
@@ -145,61 +160,6 @@ void QvtkTest::thermal_rs_stream(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_c
     sprintf(thermal_sensor_name, "Boson_320");
     int width=320;
     int height=256;
-//    for (int i=0; i<argc; i++) {
-//        // Check if RAW16 video is desired
-//        if ( argv[i][0]=='r') {
-//            video_mode=RAW16;
-//        }
-//        // Check if AGC video is desired
-//        if ( argv[i][0]=='y') {
-//            video_mode=YUV;
-//        }
-//        // Check if ZOOM to 640x512 is enabled
-//        if ( argv[i][0]=='z') {
-//            zoom_enable=1;
-//        }
-//        // Check if recording is enabled
-//        if ( argv[i][0]=='f') {  // File name has to be more than two chars
-//            record_enable=1;
-//            if ( strlen(argv[i])>2 ) {
-//                strcpy(folder_name, argv[i]+1);
-//            }
-//        }
-//        // Look for type/size of sensor
-//        if ( argv[i][0]=='s') {
-//            switch ( argv[i][1] ) {
-//                case 'B'/* value */:
-//                    my_thermal=Boson640;
-//                    sprintf(thermal_sensor_name, "Boson_640");
-//                    break;
-//                default:
-//                    my_thermal=Boson320;
-//                    sprintf(thermal_sensor_name, "Boson_320");
-//            }
-//        }
-//        // Look for feedback in ASCII
-//        if (argv[i][0]>='0' && argv[i][0]<='9') {
-//            sprintf(video, "/dev/video%c",argv[i][0]);
-//        }
-//        // Look for frame count
-//        if ( argv[i][0]=='t') {
-//            if ( strlen(argv[i])>=2 ) {
-//                strcpy(video_frames_str, argv[i]+1);
-//                video_frames = atoi( video_frames_str );
-//                printf(WHT ">>> Number of frames to record =" YEL "%i" WHT "\n", video_frames);
-//            }
-//        }
-//    }
-
-//     Folder name
-//    if (record_enable==1) {
-//        if ( strlen(folder_name)<=1 ) {  // File name has to be more than two chars
-//            strcpy(folder_name, thermal_sensor_name);
-//        }
-//        mkdir(folder_name, 0700);
-//        chdir(folder_name);
-//        printf(WHT ">>> Folder " YEL "%s" WHT " selected to record files\n", folder_name);
-//    }
 
     // Printf Sensor defined
     printf(WHT ">>> " YEL "%s" WHT " selected\n", thermal_sensor_name);
@@ -408,9 +368,10 @@ void QvtkTest::thermal_rs_stream(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_c
     vector<Point3d> real_point3d;
     vector<Point2i> imagePoints_int;
 
+
     pcd_viewer_running = true;
 
-    qDebug() << "Ready to run the main loop";
+//    qDebug() << "Ready to run the main loop";
 
     // Main loop
     while(pcd_viewer_running) {
@@ -466,19 +427,12 @@ void QvtkTest::thermal_rs_stream(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_c
         const int depth_h = aligned_depth_frame.as<rs2::video_frame>().get_height();
         const int color_w = aligned_color_frame.as<rs2::video_frame>().get_width();
         const int color_h = aligned_color_frame.as<rs2::video_frame>().get_height();
-        const int b_color_w = before_depth_frame.as<rs2::video_frame>().get_width();
-        const int b_color_h = before_depth_frame.as<rs2::video_frame>().get_height();
+
         // 如果其中一个未能获取，继续迭代
         if (!aligned_depth_frame || !aligned_color_frame)
         {
             continue;
         }
-
-        // try not to make new cv::Mat in each loop
-        // define them only onces and try to reuse them in every iteration
-        // otherwise, it would slow down the whole iteration
-
-
 
         // 创建opencv类型，并传入数据
         Mat aligned_depth_image(Size(depth_w, depth_h), CV_16UC1, (void *)aligned_depth_frame.get_data(), Mat::AUTO_STEP);
@@ -494,24 +448,6 @@ void QvtkTest::thermal_rs_stream(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_c
 
         thermal_data = thermal16_linear.clone();
         cv::resize(thermal_data,thermal_data,Size(640,480));
-
-//        imwrite("boson_output.jpg",thermal_data);
-//        imwrite("realsense_output.jpg",aligned_color_image);
-
-        // Below for projection
-
-        // try not to make new cv::Mat in each loop
-        // same as above
-        // if all the cv::Mat and vector<Point2d> will remain same size in every iteration
-        // then please define them out of loop anď resue them
-
-
-
-        // i'm sure the size of vector<Point2d> imagePoints will remain same
-        // try to define out of loop and repopulate in each iteration
-
-
-
 
         // obtain realsense output
         depthdata = aligned_depth_image.clone();
@@ -529,34 +465,16 @@ void QvtkTest::thermal_rs_stream(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_c
         Mat real_point = real_point_depth.reshape(3, 307200);
 
 
-        // i'm sure the size of vector<Point3d> real_point3d will remain same
-        // try to define out of loop and repopulate in each iteration
-        // Ok, transform it to a function
-        // Then need to transform the 3 channels points to Point3d
-
         real_point3d = Mat2Point(real_point);
 
-//        for (int i = 0; i < 307200; i++) {
-//            if (real_point3d[i].z == 0) {
-//                bad_obj_points[i] = 1;
-//            }
-//            else bad_obj_points[i] = 0;
-//        }
-        // convert this loop to
+
         bad_obj_points = gen_bad_points(real_point3d);
 
 
         projectPoints(real_point3d, relative_Rvct, relative_T, thermalIntrinsic, thermalDistortion, imagePoints);
 
-        // if the vector<Point2i> imagePoints_int will nerver change try to
-        // define out of loop and then call the function and pass the argument by reference
-        // to avoid unneccessary copying
         imagePoints_int = Pointf2i(imagePoints);
 
-
-        // if the projected_image will nerver change try to
-        // define out of loop and then call the function and pass the argument by reference
-        // to avoid unneccessary copying
         projected_image = testfunc(imagePoints_int,thermal_data,bad_obj_points);
 
         // detect the thermal region
@@ -601,36 +519,19 @@ void QvtkTest::thermal_rs_stream(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_c
             }
         }
 
-
-
-        // Here cut the image
         create_new_Mat(temp_colormap,cut_img,100,380,150,490);
         create_new_Mat_depth(aligned_depth_image,cut_depth,100,380,150,490);
 
-        qDebug() << "image processing ends";
+//        qDebug() << "image processing ends";
 
-        // if the cloud will nerver change try to
-        // define out of loop and then call the function and pass the argument by reference
-        // to avoid unneccessary copying
-//        cloud = pcl_generator(temp_colormap,aligned_depth_image);
-//        pcl_generator_mudd(temp_colormap,aligned_depth_image, cloud);
         pcl_generator(point_cloud_ptr,cut_img,cut_depth);
 
-        qDebug() << "point clouds generated";
+//        qDebug() << "point clouds generated";
 }
 }
 
-void QvtkTest::thermal_rs_stream_close(){
-    pcd_viewer_running = false;
-    qDebug() << pcd_viewer_running;
-}
-void QvtkTest::updateOpenGLWidget(boost::shared_ptr<pcl::visualization::PCLVisualizer> &viewer,pcl::PointCloud<pcl::PointXYZRGB>::Ptr point_cloud_ptr)
-{
-    pcl::visualization::PointCloudColorHandlerRGBField<pcl::PointXYZRGB> rgb(
-        point_cloud_ptr);
-    viewer->removeAllPointClouds();
-    viewer->addPointCloud<pcl::PointXYZRGB>(point_cloud_ptr, rgb, "sample cloud");
-    viewer->setPointCloudRenderingProperties(
-        pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3, "sample cloud");
-    ui.openGLWidget->update();
-}
+// rewrite the timer trigger func
+//void QvtkTest::timerEvent(QTimerEvent *e)
+//{
+
+//}

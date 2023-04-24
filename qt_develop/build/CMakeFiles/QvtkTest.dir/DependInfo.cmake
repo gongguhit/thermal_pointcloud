@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/QvtkTest.cpp" "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o"
   "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp" "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/CMakeFiles/QvtkTest.dir/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp.o"
   "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/mocs_compilation.cpp" "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.o"
+  "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/global.cpp" "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/CMakeFiles/QvtkTest.dir/global.cpp.o"
   "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/main.cpp" "/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/CMakeFiles/QvtkTest.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
@@ -18,7 +19,6 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
   "DISABLE_PNG"
   "QT_CORE_LIB"
   "QT_GUI_LIB"
-  "QT_NO_DEBUG"
   "QT_WIDGETS_LIB"
   "qh_QHpointer"
   "vtkRenderingContext2D_AUTOINIT=1(vtkRenderingContextOpenGL2)"

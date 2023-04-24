@@ -5,6 +5,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o"
   "CMakeFiles/QvtkTest.dir/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp.o"
   "CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/QvtkTest.dir/global.cpp.o"
   "CMakeFiles/QvtkTest.dir/main.cpp.o"
   "QvtkTest"
   "QvtkTest.pdb"

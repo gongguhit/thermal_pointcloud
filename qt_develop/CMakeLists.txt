@@ -90,6 +90,8 @@ else()
     rsd455.h
     QvtkTest.ui
     images.qrc
+    global.h
+    global.cpp
   )
 endif()
 

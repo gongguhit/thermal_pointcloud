@@ -21,9 +21,79 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
+struct qt_meta_stringdata_PcdvisThread_t {
+    QByteArrayData data[1];
+    char stringdata0[13];
+};
+#define QT_MOC_LITERAL(idx, ofs, len) \
+    Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    qptrdiff(offsetof(qt_meta_stringdata_PcdvisThread_t, stringdata0) + ofs \
+        - idx * sizeof(QByteArrayData)) \
+    )
+static const qt_meta_stringdata_PcdvisThread_t qt_meta_stringdata_PcdvisThread = {
+    {
+QT_MOC_LITERAL(0, 0, 12) // "PcdvisThread"
+
+    },
+    "PcdvisThread"
+};
+#undef QT_MOC_LITERAL
+
+static const uint qt_meta_data_PcdvisThread[] = {
+
+ // content:
+       8,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       0,    0, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+       0        // eod
+};
+
+void PcdvisThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    Q_UNUSED(_o);
+    Q_UNUSED(_id);
+    Q_UNUSED(_c);
+    Q_UNUSED(_a);
+}
+
+QT_INIT_METAOBJECT const QMetaObject PcdvisThread::staticMetaObject = { {
+    QMetaObject::SuperData::link<QThread::staticMetaObject>(),
+    qt_meta_stringdata_PcdvisThread.data,
+    qt_meta_data_PcdvisThread,
+    qt_static_metacall,
+    nullptr,
+    nullptr
+} };
+
+
+const QMetaObject *PcdvisThread::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *PcdvisThread::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_meta_stringdata_PcdvisThread.stringdata0))
+        return static_cast<void*>(this);
+    return QThread::qt_metacast(_clname);
+}
+
+int PcdvisThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QThread::qt_metacall(_c, _id, _a);
+    return _id;
+}
 struct qt_meta_stringdata_QvtkTest_t {
-    QByteArrayData data[12];
-    char stringdata0[254];
+    QByteArrayData data[11];
+    char stringdata0[214];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,23 +106,21 @@ QT_MOC_LITERAL(0, 0, 8), // "QvtkTest"
 QT_MOC_LITERAL(1, 9, 17), // "thermal_rs_signal"
 QT_MOC_LITERAL(2, 27, 0), // ""
 QT_MOC_LITERAL(3, 28, 8), // "message1"
-QT_MOC_LITERAL(4, 37, 17), // "thermal_rs_stream"
-QT_MOC_LITERAL(5, 55, 39), // "pcl::PointCloud<pcl::PointXYZ..."
-QT_MOC_LITERAL(6, 95, 15), // "point_cloud_ptr"
-QT_MOC_LITERAL(7, 111, 23), // "thermal_rs_stream_close"
-QT_MOC_LITERAL(8, 135, 18), // "updateOpenGLWidget"
-QT_MOC_LITERAL(9, 154, 53), // "boost::shared_ptr<pcl::visual..."
-QT_MOC_LITERAL(10, 208, 6), // "viewer"
-QT_MOC_LITERAL(11, 215, 38) // "pcl::PointCloud<pcl::PointXYZ..."
+QT_MOC_LITERAL(4, 37, 23), // "thermal_rs_stream_close"
+QT_MOC_LITERAL(5, 61, 17), // "slotPushButtonPcd"
+QT_MOC_LITERAL(6, 79, 18), // "updateOpenGLWidget"
+QT_MOC_LITERAL(7, 98, 53), // "boost::shared_ptr<pcl::visual..."
+QT_MOC_LITERAL(8, 152, 6), // "viewer"
+QT_MOC_LITERAL(9, 159, 38), // "pcl::PointCloud<pcl::PointXYZ..."
+QT_MOC_LITERAL(10, 198, 15) // "point_cloud_ptr"
 
     },
     "QvtkTest\0thermal_rs_signal\0\0message1\0"
-    "thermal_rs_stream\0"
-    "pcl::PointCloud<pcl::PointXYZRGB>::Ptr&\0"
-    "point_cloud_ptr\0thermal_rs_stream_close\0"
+    "thermal_rs_stream_close\0slotPushButtonPcd\0"
     "updateOpenGLWidget\0"
     "boost::shared_ptr<pcl::visualization::PCLVisualizer>&\0"
-    "viewer\0pcl::PointCloud<pcl::PointXYZRGB>::Ptr"
+    "viewer\0pcl::PointCloud<pcl::PointXYZRGB>::Ptr\0"
+    "point_cloud_ptr"
 };
 #undef QT_MOC_LITERAL
 
@@ -73,17 +141,17 @@ static const uint qt_meta_data_QvtkTest[] = {
        1,    1,   34,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       4,    1,   37,    2, 0x0a /* Public */,
-       7,    0,   40,    2, 0x0a /* Public */,
-       8,    2,   41,    2, 0x08 /* Private */,
+       4,    0,   37,    2, 0x0a /* Public */,
+       5,    0,   38,    2, 0x0a /* Public */,
+       6,    2,   39,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    3,
 
  // slots: parameters
-    QMetaType::Void, 0x80000000 | 5,    6,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 9, 0x80000000 | 11,   10,    6,
+    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 7, 0x80000000 | 9,    8,   10,
 
        0        // eod
 };
@@ -95,8 +163,8 @@ void QvtkTest::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->thermal_rs_signal((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 1: _t->thermal_rs_stream((*reinterpret_cast< pcl::PointCloud<pcl::PointXYZRGB>::Ptr(*)>(_a[1]))); break;
-        case 2: _t->thermal_rs_stream_close(); break;
+        case 1: _t->thermal_rs_stream_close(); break;
+        case 2: _t->slotPushButtonPcd(); break;
         case 3: _t->updateOpenGLWidget((*reinterpret_cast< boost::shared_ptr<pcl::visualization::PCLVisualizer>(*)>(_a[1])),(*reinterpret_cast< pcl::PointCloud<pcl::PointXYZRGB>::Ptr(*)>(_a[2]))); break;
         default: ;
         }

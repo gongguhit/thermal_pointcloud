@@ -66,7 +66,7 @@ QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp: ../icons/icon.jpg
 QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp: ../icons/polyu.jpg
 QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp: /opt/Qt5.14.2/5.14.2/gcc_64/bin/rcc
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic RCC for images.qrc"
-	/usr/bin/cmake -E cmake_autorcc /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/CMakeFiles/QvtkTest_autogen.dir/AutoRcc_images_EWIEGA46WW_Info.json 
+	/usr/bin/cmake -E cmake_autorcc /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/CMakeFiles/QvtkTest_autogen.dir/AutoRcc_images_EWIEGA46WW_Info.json Debug
 
 CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.o: CMakeFiles/QvtkTest.dir/flags.make
 CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.o: QvtkTest_autogen/mocs_compilation.cpp
@@ -107,9 +107,22 @@ CMakeFiles/QvtkTest.dir/QvtkTest.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/QvtkTest.dir/QvtkTest.cpp.s"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/QvtkTest.cpp -o CMakeFiles/QvtkTest.dir/QvtkTest.cpp.s
 
+CMakeFiles/QvtkTest.dir/global.cpp.o: CMakeFiles/QvtkTest.dir/flags.make
+CMakeFiles/QvtkTest.dir/global.cpp.o: ../global.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/QvtkTest.dir/global.cpp.o"
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/QvtkTest.dir/global.cpp.o -c /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/global.cpp
+
+CMakeFiles/QvtkTest.dir/global.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/QvtkTest.dir/global.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/global.cpp > CMakeFiles/QvtkTest.dir/global.cpp.i
+
+CMakeFiles/QvtkTest.dir/global.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/QvtkTest.dir/global.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/global.cpp -o CMakeFiles/QvtkTest.dir/global.cpp.s
+
 CMakeFiles/QvtkTest.dir/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp.o: CMakeFiles/QvtkTest.dir/flags.make
 CMakeFiles/QvtkTest.dir/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp.o: QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/QvtkTest.dir/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/QvtkTest.dir/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp.o"
 	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/QvtkTest.dir/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp.o -c /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp
 
 CMakeFiles/QvtkTest.dir/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp.i: cmake_force
@@ -125,6 +138,7 @@ QvtkTest_OBJECTS = \
 "CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.o" \
 "CMakeFiles/QvtkTest.dir/main.cpp.o" \
 "CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o" \
+"CMakeFiles/QvtkTest.dir/global.cpp.o" \
 "CMakeFiles/QvtkTest.dir/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp.o"
 
 # External object files for target QvtkTest
@@ -133,6 +147,7 @@ QvtkTest_EXTERNAL_OBJECTS =
 QvtkTest: CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.o
 QvtkTest: CMakeFiles/QvtkTest.dir/main.cpp.o
 QvtkTest: CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o
+QvtkTest: CMakeFiles/QvtkTest.dir/global.cpp.o
 QvtkTest: CMakeFiles/QvtkTest.dir/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp.o
 QvtkTest: CMakeFiles/QvtkTest.dir/build.make
 QvtkTest: /usr/local/lib/libpcl_surface.so
@@ -253,7 +268,7 @@ QvtkTest: /usr/local/lib/libopencv_imgcodecs.so.3.4.14
 QvtkTest: /usr/local/lib/libopencv_imgproc.so.3.4.14
 QvtkTest: /usr/local/lib/libopencv_core.so.3.4.14
 QvtkTest: CMakeFiles/QvtkTest.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable QvtkTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable QvtkTest"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/QvtkTest.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

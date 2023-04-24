@@ -11,10 +11,6 @@ QvtkTest.h
 /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/QvtkTest.h
 fusion_new.h
 /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/fusion_new.h
-QDebug
--
-QTimer
--
 
 /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/QvtkTest.h
 pcl/common/common_headers.h
@@ -33,24 +29,18 @@ QtWidgets/QWidget
 -
 build/QvtkTest_autogen/include/ui_QvtkTest.h
 /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/include/ui_QvtkTest.h
+QThread
+-
+QTimer
+-
+global.h
+/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/global.h
+QDebug
+-
 
 /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/boson320.h
 dependencies.h
 /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/dependencies.h
-
-/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/include/ui_QvtkTest.h
-QVTKOpenGLNativeWidget.h
--
-QtCore/QVariant
--
-QtWidgets/QApplication
--
-QtWidgets/QLabel
--
-QtWidgets/QPushButton
--
-QtWidgets/QWidget
--
 
 /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/calcpcd.h
 dependencies.h
@@ -134,6 +124,20 @@ rsd455.h
 calcpcd.h
 /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/calcpcd.h
 
+/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/global.h
+pcl/common/common_headers.h
+-
+pcl/point_cloud.h
+-
+pcl/point_types.h
+-
+pcl/visualization/common/common.h
+-
+pcl/visualization/pcl_visualizer.h
+-
+vtkGenericOpenGLRenderWindow.h
+-
+
 /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/rsd455.h
 dependencies.h
 /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/dependencies.h
@@ -145,6 +149,10 @@ qdebug.h
 /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QObject
 qobject.h
 /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qobject.h
+
+/opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QThread
+qthread.h
+/opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qthread.h
 
 /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QTimer
 qtimer.h
@@ -788,6 +796,16 @@ QtCore/qlocale.h
 QtCore/qscopedpointer.h
 -
 stdio.h
+-
+
+/opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qthread.h
+QtCore/qobject.h
+-
+future
+-
+functional
+-
+limits.h
 -
 
 /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qtimer.h
@@ -4764,5 +4782,19 @@ abi.h
 stdint.h
 -
 inttypes.h
+-
+
+QvtkTest_autogen/include/build/QvtkTest_autogen/include/ui_QvtkTest.h
+QVTKOpenGLNativeWidget.h
+-
+QtCore/QVariant
+-
+QtWidgets/QApplication
+-
+QtWidgets/QLabel
+-
+QtWidgets/QPushButton
+-
+QtWidgets/QWidget
 -
 
