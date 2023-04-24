@@ -71,54 +71,54 @@ QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp: /opt/Qt5.14.2/5.14.2/gcc_64/bin/rcc
 CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.o: CMakeFiles/QvtkTest.dir/flags.make
 CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.o: QvtkTest_autogen/mocs_compilation.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.o -c /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/mocs_compilation.cpp
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.o -c /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/mocs_compilation.cpp
 
 CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/mocs_compilation.cpp > CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/mocs_compilation.cpp > CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.i
 
 CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/mocs_compilation.cpp -o CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/mocs_compilation.cpp -o CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.s
 
 CMakeFiles/QvtkTest.dir/main.cpp.o: CMakeFiles/QvtkTest.dir/flags.make
 CMakeFiles/QvtkTest.dir/main.cpp.o: ../main.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/QvtkTest.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/QvtkTest.dir/main.cpp.o -c /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/main.cpp
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/QvtkTest.dir/main.cpp.o -c /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/main.cpp
 
 CMakeFiles/QvtkTest.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/QvtkTest.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/main.cpp > CMakeFiles/QvtkTest.dir/main.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/main.cpp > CMakeFiles/QvtkTest.dir/main.cpp.i
 
 CMakeFiles/QvtkTest.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/QvtkTest.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/main.cpp -o CMakeFiles/QvtkTest.dir/main.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/main.cpp -o CMakeFiles/QvtkTest.dir/main.cpp.s
 
 CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: CMakeFiles/QvtkTest.dir/flags.make
 CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: ../QvtkTest.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o -c /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/QvtkTest.cpp
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o -c /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/QvtkTest.cpp
 
 CMakeFiles/QvtkTest.dir/QvtkTest.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/QvtkTest.dir/QvtkTest.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/QvtkTest.cpp > CMakeFiles/QvtkTest.dir/QvtkTest.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/QvtkTest.cpp > CMakeFiles/QvtkTest.dir/QvtkTest.cpp.i
 
 CMakeFiles/QvtkTest.dir/QvtkTest.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/QvtkTest.dir/QvtkTest.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/QvtkTest.cpp -o CMakeFiles/QvtkTest.dir/QvtkTest.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/QvtkTest.cpp -o CMakeFiles/QvtkTest.dir/QvtkTest.cpp.s
 
 CMakeFiles/QvtkTest.dir/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp.o: CMakeFiles/QvtkTest.dir/flags.make
 CMakeFiles/QvtkTest.dir/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp.o: QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/QvtkTest.dir/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/QvtkTest.dir/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp.o -c /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/QvtkTest.dir/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp.o -c /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp
 
 CMakeFiles/QvtkTest.dir/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/QvtkTest.dir/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp > CMakeFiles/QvtkTest.dir/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp > CMakeFiles/QvtkTest.dir/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp.i
 
 CMakeFiles/QvtkTest.dir/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/QvtkTest.dir/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp -o CMakeFiles/QvtkTest.dir/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp -o CMakeFiles/QvtkTest.dir/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp.s
 
 # Object files for target QvtkTest
 QvtkTest_OBJECTS = \

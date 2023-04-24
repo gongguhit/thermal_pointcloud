@@ -4,12 +4,14 @@
 CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: ../QvtkTest.cpp
 CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: ../QvtkTest.h
 CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: ../boson320.h
+CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: QvtkTest_autogen/include/ui_QvtkTest.h
 CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: ../calcpcd.h
 CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: ../dependencies.h
 CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: ../fusion_new.h
 CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: ../rsd455.h
-CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: ../ui_QvtkTest.h
+CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QDebug
 CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QObject
+CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QTimer
 CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QVariant
 CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qalgorithms.h
 CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qarraydata.h
@@ -18,6 +20,7 @@ CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCo
 CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qatomic_cxx11.h
 CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qatomic_msvc.h
 CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qbasicatomic.h
+CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qbasictimer.h
 CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qbytearray.h
 CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qbytearraylist.h
 CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qchar.h
@@ -80,6 +83,7 @@ CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCo
 CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qt_windows.h
 CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qtcore-config.h
 CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qtextstream.h
+CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qtimer.h
 CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qtypeinfo.h
 CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qurl.h
 CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qurlquery.h
@@ -596,7 +600,7 @@ CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o: /usr/local/include/vtk-8.2/vtkkwiml/int.
 CMakeFiles/QvtkTest.dir/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp.o: QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp
 
 CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.o: ../QvtkTest.h
-CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.o: ../ui_QvtkTest.h
+CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.o: ../build/QvtkTest_autogen/include/ui_QvtkTest.h
 CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.o: QvtkTest_autogen/EWIEGA46WW/moc_QvtkTest.cpp
 CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.o: QvtkTest_autogen/mocs_compilation.cpp
 CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.o: /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QObject
@@ -1141,8 +1145,8 @@ CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.o: /usr/local/incl
 CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.o: /usr/local/include/vtk-8.2/vtkkwiml/int.h
 
 CMakeFiles/QvtkTest.dir/main.cpp.o: ../QvtkTest.h
+CMakeFiles/QvtkTest.dir/main.cpp.o: QvtkTest_autogen/include/ui_QvtkTest.h
 CMakeFiles/QvtkTest.dir/main.cpp.o: ../main.cpp
-CMakeFiles/QvtkTest.dir/main.cpp.o: ../ui_QvtkTest.h
 CMakeFiles/QvtkTest.dir/main.cpp.o: /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QObject
 CMakeFiles/QvtkTest.dir/main.cpp.o: /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QVariant
 CMakeFiles/QvtkTest.dir/main.cpp.o: /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qalgorithms.h

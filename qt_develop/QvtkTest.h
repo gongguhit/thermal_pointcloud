@@ -8,7 +8,7 @@
 #include <vtkGenericOpenGLRenderWindow.h>
 
 #include <QtWidgets/QWidget>
-#include "ui_QvtkTest.h"
+#include "build/QvtkTest_autogen/include/ui_QvtkTest.h"
 
 
 class QvtkTest : public QWidget {
@@ -20,6 +20,9 @@ class QvtkTest : public QWidget {
   QvtkTest(QWidget *parent = Q_NULLPTR);
  public slots:
   void thermal_rs_stream(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_cloud_ptr);
+  void thermal_rs_stream_close();
+ private slots:
+  void updateOpenGLWidget(boost::shared_ptr<pcl::visualization::PCLVisualizer> &viewer,pcl::PointCloud<pcl::PointXYZRGB>::Ptr point_cloud_ptr);
 
  protected:
   boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer;

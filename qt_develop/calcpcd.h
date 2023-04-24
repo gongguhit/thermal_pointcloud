@@ -2,11 +2,14 @@
 #define FUSION_CALCPCD_H
 
 #include "dependencies.h"
+#include <stdio.h>
+#include <dirent.h>
+
 using namespace cv;
 using namespace std;
 
 // import calibration data
-std::string dir_path = "calib/";
+std::string dir_path = "../calib/";
 // data name
 std::string rgbIn = "boson_realsense_RGB_intrinsic";
 std::string rgbDis = "boson_realsense_RGB_distortion";
@@ -26,6 +29,11 @@ std::vector<T> range(T start, T end) {
 // readxml file of camera calibrating parameters
 Mat readxml(std::string name){
     std::string path = dir_path + name + ".xml";
+    // print current path
+//    char *buffer;
+//    buffer = getcwd(NULL,0);
+//    printf("%s\n",buffer);
+//    free(buffer);
     cv::FileStorage file(path,cv::FileStorage::READ);
     if(!file.isOpened()){
         std::cout<<"Failed to open the xml file "<<path<<std::endl;

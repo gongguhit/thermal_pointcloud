@@ -5,12 +5,14 @@ CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o
  /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/QvtkTest.cpp
  /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/QvtkTest.h
  /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/boson320.h
+ /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/include/ui_QvtkTest.h
  /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/calcpcd.h
  /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/dependencies.h
  /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/fusion_new.h
  /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/rsd455.h
- /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/ui_QvtkTest.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QDebug
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QObject
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QTimer
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QVariant
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qalgorithms.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qarraydata.h
@@ -19,6 +21,7 @@ CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qatomic_cxx11.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qatomic_msvc.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qbasicatomic.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qbasictimer.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qbytearray.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qbytearraylist.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qchar.h
@@ -81,6 +84,7 @@ CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qt_windows.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qtcore-config.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qtextstream.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qtimer.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qtypeinfo.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qurl.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qurlquery.h
@@ -597,7 +601,7 @@ CMakeFiles/QvtkTest.dir/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp.o
  /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp
 CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.o
  ../QvtkTest.h
- ../ui_QvtkTest.h
+ ../build/QvtkTest_autogen/include/ui_QvtkTest.h
  /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/EWIEGA46WW/moc_QvtkTest.cpp
  /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/mocs_compilation.cpp
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QObject
@@ -1142,8 +1146,8 @@ CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.o
  /usr/local/include/vtk-8.2/vtkkwiml/int.h
 CMakeFiles/QvtkTest.dir/main.cpp.o
  /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/QvtkTest.h
+ /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/include/ui_QvtkTest.h
  /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/main.cpp
- /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/ui_QvtkTest.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QObject
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QVariant
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qalgorithms.h

@@ -1,5 +1,7 @@
 #include "QvtkTest.h"
 #include "fusion_new.h"
+#include <QDebug>
+#include <QTimer>
 
 QvtkTest::QvtkTest(QWidget *parent) : QWidget(parent) {
   ui.setupUi(this);
@@ -58,10 +60,23 @@ QvtkTest::QvtkTest(QWidget *parent) : QWidget(parent) {
   // connect push_button
 
   connect(ui.pushButton_pcd,&QPushButton::clicked,this,[=](){QvtkTest::thermal_rs_stream(point_cloud_ptr);});
-  viewer->addPointCloud<pcl::PointXYZRGB>(point_cloud_ptr, rgb, "sample cloud");
-  viewer->setPointCloudRenderingProperties(
-      pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3, "sample cloud");
-  ui.openGLWidget->update();
+  connect(ui.pushButton_stop,&QPushButton::clicked,this,[=](){QvtkTest::thermal_rs_stream_close();});
+ // Here to attempt automatic refreshing pointcloud 22/April
+  QTimer *timer = new QTimer(this);
+
+  connect(timer,&QTimer::timeout,ui.openGLWidget,[=](){SLOT(updateOpenGLWidget(viewer,point_cloud_ptr));});
+  // set framerate = 20
+  int frameRate = 20;
+  timer->setInterval(1000 / frameRate);
+  timer->start();
+
+  // simply visualize the sample clouds
+//  viewer->removeAllPointClouds();
+//  viewer->addPointCloud<pcl::PointXYZRGB>(point_cloud_ptr, rgb, "sample cloud");
+//  viewer->setPointCloudRenderingProperties(
+//      pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3, "sample cloud");
+//  ui.openGLWidget->update();
+
 }
 
 void QvtkTest::initialVtkWidget() {
@@ -176,7 +191,7 @@ void QvtkTest::thermal_rs_stream(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_c
 //        }
 //    }
 
-    // Folder name
+//     Folder name
 //    if (record_enable==1) {
 //        if ( strlen(folder_name)<=1 ) {  // File name has to be more than two chars
 //            strcpy(folder_name, thermal_sensor_name);
@@ -186,26 +201,26 @@ void QvtkTest::thermal_rs_stream(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_c
 //        printf(WHT ">>> Folder " YEL "%s" WHT " selected to record files\n", folder_name);
 //    }
 
-//    // Printf Sensor defined
-//    printf(WHT ">>> " YEL "%s" WHT " selected\n", thermal_sensor_name);
+    // Printf Sensor defined
+    printf(WHT ">>> " YEL "%s" WHT " selected\n", thermal_sensor_name);
 
-//    // We open the Video Device
-//    printf(WHT ">>> " YEL "%s" WHT " selected\n", video);
-//    if((fd = open(video, O_RDWR)) < 0){
-//        perror(RED "Error : OPEN. Invalid Video Device" WHT "\n");
-//        exit(1);
-//    }
+    // We open the Video Device
+    printf(WHT ">>> " YEL "%s" WHT " selected\n", video);
+    if((fd = open(video, O_RDWR)) < 0){
+        perror(RED "Error : OPEN. Invalid Video Device" WHT "\n");
+        exit(1);
+    }
 
-//    // Check VideoCapture mode is available
-//    if(ioctl(fd, VIDIOC_QUERYCAP, &cap) < 0){
-//        perror(RED "ERROR : VIDIOC_QUERYCAP. Video Capture is not available" WHT "\n");
-//        exit(1);
-//    }
+    // Check VideoCapture mode is available
+    if(ioctl(fd, VIDIOC_QUERYCAP, &cap) < 0){
+        perror(RED "ERROR : VIDIOC_QUERYCAP. Video Capture is not available" WHT "\n");
+        exit(1);
+    }
 
-//    if(!(cap.capabilities & V4L2_CAP_VIDEO_CAPTURE)){
-//        fprintf(stderr, RED "The device does not handle single-planar video capture." WHT "\n");
-//        exit(1);
-//    }
+    if(!(cap.capabilities & V4L2_CAP_VIDEO_CAPTURE)){
+        fprintf(stderr, RED "The device does not handle single-planar video capture." WHT "\n");
+        exit(1);
+    }
 
     struct v4l2_format format;
 
@@ -392,6 +407,10 @@ void QvtkTest::thermal_rs_stream(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_c
 
     vector<Point3d> real_point3d;
     vector<Point2i> imagePoints_int;
+
+    pcd_viewer_running = true;
+
+    qDebug() << "Ready to run the main loop";
 
     // Main loop
     while(pcd_viewer_running) {
@@ -582,9 +601,13 @@ void QvtkTest::thermal_rs_stream(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_c
             }
         }
 
+
+
         // Here cut the image
         create_new_Mat(temp_colormap,cut_img,100,380,150,490);
         create_new_Mat_depth(aligned_depth_image,cut_depth,100,380,150,490);
+
+        qDebug() << "image processing ends";
 
         // if the cloud will nerver change try to
         // define out of loop and then call the function and pass the argument by reference
@@ -592,6 +615,22 @@ void QvtkTest::thermal_rs_stream(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_c
 //        cloud = pcl_generator(temp_colormap,aligned_depth_image);
 //        pcl_generator_mudd(temp_colormap,aligned_depth_image, cloud);
         pcl_generator(point_cloud_ptr,cut_img,cut_depth);
+
+        qDebug() << "point clouds generated";
 }
 }
 
+void QvtkTest::thermal_rs_stream_close(){
+    pcd_viewer_running = false;
+    qDebug() << pcd_viewer_running;
+}
+void QvtkTest::updateOpenGLWidget(boost::shared_ptr<pcl::visualization::PCLVisualizer> &viewer,pcl::PointCloud<pcl::PointXYZRGB>::Ptr point_cloud_ptr)
+{
+    pcl::visualization::PointCloudColorHandlerRGBField<pcl::PointXYZRGB> rgb(
+        point_cloud_ptr);
+    viewer->removeAllPointClouds();
+    viewer->addPointCloud<pcl::PointXYZRGB>(point_cloud_ptr, rgb, "sample cloud");
+    viewer->setPointCloudRenderingProperties(
+        pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3, "sample cloud");
+    ui.openGLWidget->update();
+}

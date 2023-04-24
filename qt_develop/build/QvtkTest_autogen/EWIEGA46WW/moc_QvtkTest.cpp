@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_QvtkTest_t {
-    QByteArrayData data[7];
-    char stringdata0[111];
+    QByteArrayData data[12];
+    char stringdata0[254];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -38,13 +38,21 @@ QT_MOC_LITERAL(2, 27, 0), // ""
 QT_MOC_LITERAL(3, 28, 8), // "message1"
 QT_MOC_LITERAL(4, 37, 17), // "thermal_rs_stream"
 QT_MOC_LITERAL(5, 55, 39), // "pcl::PointCloud<pcl::PointXYZ..."
-QT_MOC_LITERAL(6, 95, 15) // "point_cloud_ptr"
+QT_MOC_LITERAL(6, 95, 15), // "point_cloud_ptr"
+QT_MOC_LITERAL(7, 111, 23), // "thermal_rs_stream_close"
+QT_MOC_LITERAL(8, 135, 18), // "updateOpenGLWidget"
+QT_MOC_LITERAL(9, 154, 53), // "boost::shared_ptr<pcl::visual..."
+QT_MOC_LITERAL(10, 208, 6), // "viewer"
+QT_MOC_LITERAL(11, 215, 38) // "pcl::PointCloud<pcl::PointXYZ..."
 
     },
     "QvtkTest\0thermal_rs_signal\0\0message1\0"
     "thermal_rs_stream\0"
     "pcl::PointCloud<pcl::PointXYZRGB>::Ptr&\0"
-    "point_cloud_ptr"
+    "point_cloud_ptr\0thermal_rs_stream_close\0"
+    "updateOpenGLWidget\0"
+    "boost::shared_ptr<pcl::visualization::PCLVisualizer>&\0"
+    "viewer\0pcl::PointCloud<pcl::PointXYZRGB>::Ptr"
 };
 #undef QT_MOC_LITERAL
 
@@ -54,7 +62,7 @@ static const uint qt_meta_data_QvtkTest[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -62,16 +70,20 @@ static const uint qt_meta_data_QvtkTest[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   24,    2, 0x06 /* Public */,
+       1,    1,   34,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       4,    1,   27,    2, 0x0a /* Public */,
+       4,    1,   37,    2, 0x0a /* Public */,
+       7,    0,   40,    2, 0x0a /* Public */,
+       8,    2,   41,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    3,
 
  // slots: parameters
     QMetaType::Void, 0x80000000 | 5,    6,
+    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 9, 0x80000000 | 11,   10,    6,
 
        0        // eod
 };
@@ -84,6 +96,8 @@ void QvtkTest::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         switch (_id) {
         case 0: _t->thermal_rs_signal((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 1: _t->thermal_rs_stream((*reinterpret_cast< pcl::PointCloud<pcl::PointXYZRGB>::Ptr(*)>(_a[1]))); break;
+        case 2: _t->thermal_rs_stream_close(); break;
+        case 3: _t->updateOpenGLWidget((*reinterpret_cast< boost::shared_ptr<pcl::visualization::PCLVisualizer>(*)>(_a[1])),(*reinterpret_cast< pcl::PointCloud<pcl::PointXYZRGB>::Ptr(*)>(_a[2]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -127,13 +141,13 @@ int QvtkTest::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 4)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 2;
+        _id -= 4;
     }
     return _id;
 }
