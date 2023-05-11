@@ -92,8 +92,8 @@ int PcdvisThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 struct qt_meta_stringdata_QvtkTest_t {
-    QByteArrayData data[11];
-    char stringdata0[214];
+    QByteArrayData data[15];
+    char stringdata0[289];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -108,19 +108,25 @@ QT_MOC_LITERAL(2, 27, 0), // ""
 QT_MOC_LITERAL(3, 28, 8), // "message1"
 QT_MOC_LITERAL(4, 37, 23), // "thermal_rs_stream_close"
 QT_MOC_LITERAL(5, 61, 17), // "slotPushButtonPcd"
-QT_MOC_LITERAL(6, 79, 18), // "updateOpenGLWidget"
-QT_MOC_LITERAL(7, 98, 53), // "boost::shared_ptr<pcl::visual..."
-QT_MOC_LITERAL(8, 152, 6), // "viewer"
-QT_MOC_LITERAL(9, 159, 38), // "pcl::PointCloud<pcl::PointXYZ..."
-QT_MOC_LITERAL(10, 198, 15) // "point_cloud_ptr"
+QT_MOC_LITERAL(6, 79, 26), // "on_runScriptButton_clicked"
+QT_MOC_LITERAL(7, 106, 18), // "updateOpenGLWidget"
+QT_MOC_LITERAL(8, 125, 53), // "boost::shared_ptr<pcl::visual..."
+QT_MOC_LITERAL(9, 179, 6), // "viewer"
+QT_MOC_LITERAL(10, 186, 38), // "pcl::PointCloud<pcl::PointXYZ..."
+QT_MOC_LITERAL(11, 225, 15), // "point_cloud_ptr"
+QT_MOC_LITERAL(12, 241, 18), // "tempsliderReleased"
+QT_MOC_LITERAL(13, 260, 22), // "tempSliderValueChanged"
+QT_MOC_LITERAL(14, 283, 5) // "value"
 
     },
     "QvtkTest\0thermal_rs_signal\0\0message1\0"
     "thermal_rs_stream_close\0slotPushButtonPcd\0"
+    "on_runScriptButton_clicked\0"
     "updateOpenGLWidget\0"
     "boost::shared_ptr<pcl::visualization::PCLVisualizer>&\0"
     "viewer\0pcl::PointCloud<pcl::PointXYZRGB>::Ptr\0"
-    "point_cloud_ptr"
+    "point_cloud_ptr\0tempsliderReleased\0"
+    "tempSliderValueChanged\0value"
 };
 #undef QT_MOC_LITERAL
 
@@ -130,7 +136,7 @@ static const uint qt_meta_data_QvtkTest[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -138,12 +144,15 @@ static const uint qt_meta_data_QvtkTest[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   34,    2, 0x06 /* Public */,
+       1,    1,   49,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       4,    0,   37,    2, 0x0a /* Public */,
-       5,    0,   38,    2, 0x0a /* Public */,
-       6,    2,   39,    2, 0x08 /* Private */,
+       4,    0,   52,    2, 0x0a /* Public */,
+       5,    0,   53,    2, 0x0a /* Public */,
+       6,    0,   54,    2, 0x0a /* Public */,
+       7,    2,   55,    2, 0x08 /* Private */,
+      12,    0,   60,    2, 0x0a /* Public */,
+      13,    1,   61,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    3,
@@ -151,7 +160,10 @@ static const uint qt_meta_data_QvtkTest[] = {
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 7, 0x80000000 | 9,    8,   10,
+    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 8, 0x80000000 | 10,    9,   11,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,   14,
 
        0        // eod
 };
@@ -165,7 +177,10 @@ void QvtkTest::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         case 0: _t->thermal_rs_signal((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 1: _t->thermal_rs_stream_close(); break;
         case 2: _t->slotPushButtonPcd(); break;
-        case 3: _t->updateOpenGLWidget((*reinterpret_cast< boost::shared_ptr<pcl::visualization::PCLVisualizer>(*)>(_a[1])),(*reinterpret_cast< pcl::PointCloud<pcl::PointXYZRGB>::Ptr(*)>(_a[2]))); break;
+        case 3: _t->on_runScriptButton_clicked(); break;
+        case 4: _t->updateOpenGLWidget((*reinterpret_cast< boost::shared_ptr<pcl::visualization::PCLVisualizer>(*)>(_a[1])),(*reinterpret_cast< pcl::PointCloud<pcl::PointXYZRGB>::Ptr(*)>(_a[2]))); break;
+        case 5: _t->tempsliderReleased(); break;
+        case 6: _t->tempSliderValueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -209,13 +224,13 @@ int QvtkTest::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 7;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 7)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 4;
+        _id -= 7;
     }
     return _id;
 }

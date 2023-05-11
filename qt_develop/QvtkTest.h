@@ -13,6 +13,7 @@
 #include <QTimer>
 #include "global.h"
 #include <QDebug>
+#include <QProcess>
 
 //external function
 void thermal_rs_stream_thread(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_cloud_ptr);
@@ -22,7 +23,10 @@ class PcdvisThread:public QThread {
 public:
     PcdvisThread(QObject* parent = nullptr) : QThread(parent) {}
     void run() override{
+        while(!shouldStop){
         thermal_rs_stream_thread(point_cloud_ptr);
+        }
+        qDebug() << "thermal_rs_thread terminated";
     }
 };
 
@@ -37,16 +41,25 @@ class QvtkTest : public QWidget {
 //  pcl::PointCloud<pcl::PointXYZRGB>::Ptr point_cloud_ptr;
 //  virtual void timerEvent(QTimerEvent *e);
  public slots:
-  void thermal_rs_stream_close();
+  void thermal_rs_stream_close(){
+      pcd_viewer_running = false;
+      shouldStop = true;
+
+  };
   // create new thread for press button
   void slotPushButtonPcd(){
+      shouldStop = false;
       PcdvisThread* pcdvisthread = new PcdvisThread(this);
       pcdvisthread->start();
   }
+  void on_runScriptButton_clicked();
 
  private slots:
   void updateOpenGLWidget(boost::shared_ptr<pcl::visualization::PCLVisualizer> &viewer,pcl::PointCloud<pcl::PointXYZRGB>::Ptr point_cloud_ptr);
 
+ public Q_SLOTS:
+  void tempsliderReleased();
+  void tempSliderValueChanged(int value);
  protected:
 
   pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_filtered;
@@ -56,6 +69,7 @@ class QvtkTest : public QWidget {
   Ui::QvtkTestClass ui;
   void initialVtkWidget();
   QTimer *timer;
+  int temperature;
 };
 
 

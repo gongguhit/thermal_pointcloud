@@ -12,6 +12,8 @@
 extern bool pcd_viewer_running; // 声明全局变量 g_num
 extern boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer;
 extern pcl::PointCloud<pcl::PointXYZRGB>::Ptr point_cloud_ptr;
+extern float temp_threshold;
+extern bool shouldStop;
 
 //pcl::PointCloud<pcl::PointXYZRGB>::Ptr point_cloud_ptr;
 

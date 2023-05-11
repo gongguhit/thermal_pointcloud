@@ -56,14 +56,14 @@ QvtkTest::QvtkTest(QWidget *parent) : QWidget(parent) {
   pcl::visualization::PointCloudColorHandlerRGBField<pcl::PointXYZRGB> rgb(
       point_cloud_ptr);
 
-  viewer->addCoordinateSystem(1.0);
+//  viewer->addCoordinateSystem(1.0);
   viewer->initCameraParameters();
 
   // Here to attempt automatic refreshing pointcloud 22/April
 
   timer = new QTimer(this);
   connect(timer,&QTimer::timeout,this,[=](){QvtkTest::updateOpenGLWidget(viewer,point_cloud_ptr);});
-  timer->start(50);
+  timer->start(30);
 
   // connect push_button
 
@@ -71,6 +71,15 @@ QvtkTest::QvtkTest(QWidget *parent) : QWidget(parent) {
   connect(ui.pushButton_pcd,&QPushButton::clicked,this,[=](){QvtkTest::slotPushButtonPcd();});
   connect(ui.pushButton_stop,&QPushButton::clicked,this,[=](){QvtkTest::thermal_rs_stream_close();});
 
+ // set slider range
+  ui.horizontalSlider_thresh->setMaximum(140);
+  ui.horizontalSlider_thresh->setMinimum(0);
+  // connect threshold sliders to the function
+  connect(ui.horizontalSlider_thresh,SIGNAL(valueChanged (int)),this,SLOT(tempSliderValueChanged(int)));
+  connect(ui.horizontalSlider_thresh,SIGNAL(sliderReleased()),this,SLOT(tempsliderReleased()));
+
+  // add exectue python button
+  connect(ui.pushButton_py, SIGNAL(clicked()), this, SLOT(on_runScriptButton_clicked()));
 
 
   // set framerate = 20
@@ -90,28 +99,24 @@ void QvtkTest::initialVtkWidget() {
   vtkNew<vtkGenericOpenGLRenderWindow> window;
   window->AddRenderer(viewer->getRendererCollection()->GetFirstRenderer());
   ui.openGLWidget->SetRenderWindow(window.Get());
-  viewer->setCameraPosition(0, 0, -3.0, 0, -1, 0);
+  viewer->setCameraPosition(-20,20,-20,0,0,0,0);
   viewer->setupInteractor(ui.openGLWidget->GetInteractor(),
                           ui.openGLWidget->GetRenderWindow());
-  ui.openGLWidget->update();
+//  ui.openGLWidget->update();
 }
 
-void QvtkTest::thermal_rs_stream_close(){
-    pcd_viewer_running = false;
-//    qDebug() << pcd_viewer_running;
-}
+//void QvtkTest::thermal_rs_stream_close(){
+//    pcd_viewer_running = false;
+////    qDebug() << pcd_viewer_running;
+//}
 void QvtkTest::updateOpenGLWidget(boost::shared_ptr<pcl::visualization::PCLVisualizer> &viewer,pcl::PointCloud<pcl::PointXYZRGB>::Ptr point_cloud_ptr)
 {
     pcl::visualization::PointCloudColorHandlerRGBField<pcl::PointXYZRGB> color(point_cloud_ptr);
     viewer->removeAllPointClouds();
     viewer->addPointCloud<pcl::PointXYZRGB>(point_cloud_ptr, color, "pclviewer");
-//    viewer->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE,3,"pclviewer");
-//    viewer->setupInteractor(ui.openGLWidget->GetInteractor(),
-//                            ui.openGLWidget->GetRenderWindow());
-//    viewer->updatePointCloud(point_cloud_ptr,color,"pclviewer");
-//    viewer->resetCamera();
-//    qDebug() << "Point cloud updated";
+    ui.openGLWidget->GetRenderWindow()->Render();
     ui.openGLWidget->update();
+//    qDebug() << "pcd updated";
 }
 
 void thermal_rs_stream_thread(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_cloud_ptr){
@@ -220,10 +225,12 @@ void thermal_rs_stream_thread(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_clou
     format.fmt.pix.height = height;
 
     // request desired FORMAT
-    if(ioctl(fd, VIDIOC_S_FMT, &format) < 0){
-        perror(RED "VIDIOC_S_FMT" WHT);
-        exit(1);
-    }
+//    if(ioctl(fd, VIDIOC_S_FMT, &format) < 0){
+//        perror(RED "VIDIOC_S_FMT" WHT);
+//        exit(1);
+//    }
+
+    qDebug() << "check point 1";
 
     // we need to inform the device about buffers to use.
     // and we need to allocate them.
@@ -239,6 +246,7 @@ void thermal_rs_stream_thread(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_clou
         perror(RED "VIDIOC_REQBUFS" WHT);
         exit(1);
     }
+    qDebug() << "check point 2";
 
     // Now that the device knows how to provide its data,
     // we need to ask it about the amount of memory it needs,
@@ -256,6 +264,8 @@ void thermal_rs_stream_thread(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_clou
         perror(RED "VIDIOC_QUERYBUF" WHT);
         exit(1);
     }
+
+    qDebug() << "check point 3";
 
 
     // map fd+offset into a process location (kernel will decide due to our NULL). lenght and
@@ -359,7 +369,7 @@ void thermal_rs_stream_thread(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_clou
 
 //    int bad_obj_points[307200];
     int* bad_obj_points;
-    int temp_thres = 140;
+//    int temp_thres = 140;
     int max_temp;
 
     Mat w_x;
@@ -482,7 +492,7 @@ void thermal_rs_stream_thread(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_clou
 
         // Filter the high temperature regieon
         high_temp_image = projected_image.clone();
-        threshold(high_temp_image, high_temp_image, temp_thres, 255, THRESH_TOZERO);
+        threshold(high_temp_image, high_temp_image, temp_threshold, 255, THRESH_TOZERO);
         high_temp_image.convertTo(high_temp_image, CV_8UC1);
         temp_mask = high_temp_image.clone();
         // generate a high temperature mask
@@ -503,7 +513,7 @@ void thermal_rs_stream_thread(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_clou
         for (int i = 0; i < 480; i++) {
             for (int j = 0; j < 640; j++) {
                 if (high_temp_image.at<uchar>(i, j) != 0) {
-                    high_temp_image.at<uchar>(i, j) = floor(float((high_temp_image.at<uchar>(i, j) - temp_thres)) / float((max_temp - temp_thres)) * 255);
+                    high_temp_image.at<uchar>(i, j) = floor(float((high_temp_image.at<uchar>(i, j) - temp_threshold)) / float((max_temp - temp_threshold)) * 255);
                 }
             }
         }
@@ -528,10 +538,40 @@ void thermal_rs_stream_thread(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_clou
 
 //        qDebug() << "point clouds generated";
 }
+
+    while(!pcd_viewer_running){
+     qDebug() << "run into camera close";
+     // close boson
+     close(fd);
+     qDebug() << "boson closed successful";
+    // close realsense
+    pipe.stop();
+    qDebug() << "realsense closed successful";
+
+     break;
 }
 
-// rewrite the timer trigger func
-//void QvtkTest::timerEvent(QTimerEvent *e)
-//{
+}
+// Temperature threshold slider functions
+void QvtkTest::tempsliderReleased()
+{
+    // set new threshold
+    temp_threshold = float(temperature);
+//    qDebug() << temp_threshold;
+}
+void QvtkTest::tempSliderValueChanged(int value)
+{
+    temperature = value;
+//    qDebug() << temperature;
+}
 
-//}
+// python script button
+void QvtkTest::on_runScriptButton_clicked(){
+    QString program = "python3";
+    QStringList arguments;
+    arguments << "/home/gg/Downloads/calibration/gui.py";
+    QProcess *myProcess = new QProcess(this);
+    myProcess->start(program, arguments);
+    myProcess->waitForFinished();
+    QString output = myProcess->readAllStandardOutput();
+}

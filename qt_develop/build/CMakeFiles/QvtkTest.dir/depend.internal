@@ -12,9 +12,11 @@ CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o
  /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/rsd455.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QDebug
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QObject
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QProcess
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QThread
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QTimer
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QVariant
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qabstractitemmodel.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qalgorithms.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qarraydata.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qatomic.h
@@ -63,10 +65,12 @@ CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qobjectdefs_impl.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qpair.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qpoint.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qprocess.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qprocessordetection.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qrect.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qrefcount.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qregexp.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qregularexpression.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qscopedpointer.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qset.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qshareddata.h
@@ -125,22 +129,37 @@ CMakeFiles/QvtkTest.dir/QvtkTest.cpp.o
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtguiglobal.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtouchdevice.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtransform.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qvalidator.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qvector2d.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qwindowdefs.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qwindowdefs_win.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QApplication
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QComboBox
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QLCDNumber
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QLabel
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QOpenGLWidget
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QPushButton
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QSlider
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QWidget
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractbutton.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractitemdelegate.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractslider.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractspinbox.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qapplication.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcombobox.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qdesktopwidget.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qframe.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlabel.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlcdnumber.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qopenglwidget.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qpushbutton.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qrubberband.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qsizepolicy.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qslider.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qstyle.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qstyleoption.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtabbar.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtabwidget.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtwidgets-config.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qwidget.h
@@ -609,9 +628,11 @@ CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.o
  /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/mocs_compilation.cpp
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QDebug
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QObject
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QProcess
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QThread
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QTimer
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QVariant
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qabstractitemmodel.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qalgorithms.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qarraydata.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qatomic.h
@@ -660,10 +681,12 @@ CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.o
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qobjectdefs_impl.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qpair.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qpoint.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qprocess.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qprocessordetection.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qrect.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qrefcount.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qregexp.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qregularexpression.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qscopedpointer.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qset.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qshareddata.h
@@ -722,22 +745,37 @@ CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.o
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtguiglobal.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtouchdevice.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtransform.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qvalidator.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qvector2d.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qwindowdefs.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qwindowdefs_win.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QApplication
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QComboBox
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QLCDNumber
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QLabel
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QOpenGLWidget
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QPushButton
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QSlider
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QWidget
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractbutton.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractitemdelegate.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractslider.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractspinbox.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qapplication.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcombobox.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qdesktopwidget.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qframe.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlabel.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlcdnumber.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qopenglwidget.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qpushbutton.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qrubberband.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qsizepolicy.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qslider.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qstyle.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qstyleoption.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtabbar.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtabwidget.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtwidgets-config.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qwidget.h
@@ -1569,9 +1607,11 @@ CMakeFiles/QvtkTest.dir/main.cpp.o
  /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/main.cpp
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QDebug
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QObject
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QProcess
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QThread
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QTimer
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/QVariant
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qabstractitemmodel.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qalgorithms.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qarraydata.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qatomic.h
@@ -1620,10 +1660,12 @@ CMakeFiles/QvtkTest.dir/main.cpp.o
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qobjectdefs_impl.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qpair.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qpoint.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qprocess.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qprocessordetection.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qrect.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qrefcount.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qregexp.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qregularexpression.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qscopedpointer.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qset.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtCore/qshareddata.h
@@ -1682,22 +1724,37 @@ CMakeFiles/QvtkTest.dir/main.cpp.o
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtguiglobal.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtouchdevice.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtransform.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qvalidator.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qvector2d.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qwindowdefs.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qwindowdefs_win.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QApplication
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QComboBox
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QLCDNumber
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QLabel
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QOpenGLWidget
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QPushButton
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QSlider
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QWidget
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractbutton.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractitemdelegate.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractslider.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractspinbox.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qapplication.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcombobox.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qdesktopwidget.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qframe.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlabel.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlcdnumber.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qopenglwidget.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qpushbutton.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qrubberband.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qsizepolicy.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qslider.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qstyle.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qstyleoption.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtabbar.h
+ /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtabwidget.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtwidgets-config.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h
  /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qwidget.h
