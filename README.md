@@ -48,3 +48,9 @@ make
 - PCL 1.11.1
 - Qt 5.14
 - VTK 8.2.0
+
+### GUI effect
+
+
+https://user-images.githubusercontent.com/57355712/234009851-3e7884ae-9c83-47bc-998b-97b42f76f67b.mp4
+
