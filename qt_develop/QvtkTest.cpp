@@ -1,4 +1,4 @@
-#include "QvtkTest.h"
+﻿#include "QvtkTest.h"
 #include "fusion_new.h"
 
 
@@ -142,7 +142,7 @@ void QvtkTest::updateOpenGLWidget(boost::shared_ptr<pcl::visualization::PCLVisua
 //    qDebug() << "pcd updated";
 }
 
-void thermal_rs_stream_thread(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_cloud_ptr){
+void thermal_rs_stream_thread(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_cloud_ptr,cv::Mat &thermal_uchar_cut){
     int ret;
     int fd;
     struct v4l2_capability cap;
@@ -527,12 +527,14 @@ void thermal_rs_stream_thread(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_clou
 
         projected_image = testfunc(imagePoints_int,thermal_data,bad_obj_points);
 
+
 //        cv::namedWindow("test_projected");
 //        cv::imshow("test_projected",projected_image);
 //        cv::waitKey(0);
 
         // detect the thermal region
         cut_wrong_edge(projected_image,100,380,150,490);
+        create_new_Mat_uchar(projected_image,thermal_uchar_cut,100,380,150,490);
 
         // Filter the high temperature regieon
         high_temp_image = projected_image.clone();
@@ -725,8 +727,9 @@ bool QvtkTest::eventFilter(QObject *obj, QEvent *event){
                                 point.z = picked[2];
 
                                 qDebug() << "Successfully picked up a point";
+                                pclPointToUV(point,thermal_u,thermal_v,thermal_uchar_cut,temp_text);
 
-                                QString text = QString("X: %1\nY: %2\nZ: %3\n").arg(point.x).arg(point.y).arg(point.z);
+                                QString text = QString("X: %1\nY: %2\nZ: %3\nTemperature: %4\n").arg(point.x).arg(point.y).arg(point.z).arg(temp_text);
                                 ui.textBrowser->setText(text);
 
                                 // Display point x, y, z information using appropriate widgets in main window

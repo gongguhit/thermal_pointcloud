@@ -18,14 +18,14 @@
 #include <vtkPicker.h>
 
 //external function
-void thermal_rs_stream_thread(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_cloud_ptr);
+void thermal_rs_stream_thread(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_cloud_ptr,cv::Mat &thermal_uchar_cut);
 void pointPick_callback(const pcl::visualization::PointPickingEvent& event, void* args);
+
 
 // here for point cloud interaction
 typedef pcl::PointXYZ PointT;
 typedef pcl::PointCloud<PointT> PointCloudT;
 typedef pcl::visualization::PCLVisualizer Visualizer;
-
 
 
 class PcdvisThread:public QThread {
@@ -34,7 +34,7 @@ public:
     PcdvisThread(QObject* parent = nullptr) : QThread(parent) {}
     void run() override{
         while(!shouldStop){
-        thermal_rs_stream_thread(point_cloud_ptr);
+        thermal_rs_stream_thread(point_cloud_ptr,thermal_uchar_cut);
         }
     }
 };

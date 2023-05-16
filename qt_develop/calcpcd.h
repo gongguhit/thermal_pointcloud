@@ -163,6 +163,13 @@ void create_new_Mat_depth(Mat src,Mat &dst,int h,int l,int j,int k){
         }
     }
 }
+void create_new_Mat_uchar(Mat src,Mat &dst,int h,int l,int j,int k){
+    for (int row = 0;row<(l-h);row++){
+        for(int col = 0;col<(k-j);col++){
+            dst.at<uchar>(row,col) = src.at<ushort>(row+h,col+j);
+        }
+    }
+}
 void print3Dpoints(vector<Point3d> real_point3d){
     for (int i = 10000; i<1000;i++){
         cout <<"x: "<< real_point3d[i].x<<endl;
@@ -301,6 +308,25 @@ void pcl_generator_mudd (Mat &rgb, Mat &depth, pcl::PointCloud<pcl::PointXYZRGB>
 
 
 //    return pointCloud;
+}
+
+void pclPointToUV(pcl::PointXYZ point, int& thermal_u, int& thermal_v,cv::Mat thermal_uchar_cut,float &temp_text)
+{
+    double cx = 381.0;
+    double cy = 379.2;
+    double fx = 316.7;
+    double fy = 233.7;
+
+    double x = point.x;
+    double y = point.y;
+    double z = point.z;
+
+    thermal_u = static_cast<int>(std::round(x * fx / z + cx));
+    thermal_v = static_cast<int>(std::round(y * fy / z + cy));
+
+    if ((thermal_u < 340) && (thermal_v < 280) && (thermal_u > 0) && (thermal_u > 0)){
+        temp_text = (thermal_uchar_cut.at<uchar>(thermal_u,thermal_v) + 160.0)/10.0;
+    }
 }
 
 #endif //FUSION_CALCPCD_H
