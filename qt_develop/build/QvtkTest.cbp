@@ -53,6 +53,7 @@
 					<Add option="-DQT_WIDGETS_LIB"/>
 					<Add option="-DQT_GUI_LIB"/>
 					<Add option="-DQT_CORE_LIB"/>
+					<Add option="-DQT_NO_DEBUG"/>
 					<Add directory="/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build"/>
 					<Add directory="/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop"/>
 					<Add directory="/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/include"/>
@@ -98,6 +99,7 @@
 					<Add option="-DQT_WIDGETS_LIB"/>
 					<Add option="-DQT_GUI_LIB"/>
 					<Add option="-DQT_CORE_LIB"/>
+					<Add option="-DQT_NO_DEBUG"/>
 					<Add directory="/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build"/>
 					<Add directory="/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop"/>
 					<Add directory="/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/QvtkTest_autogen/include"/>

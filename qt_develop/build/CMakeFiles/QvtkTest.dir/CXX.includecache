@@ -39,6 +39,10 @@ QDebug
 -
 QProcess
 -
+QMouseEvent
+-
+vtkPicker.h
+-
 
 /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/boson320.h
 dependencies.h
@@ -968,6 +972,10 @@ QtCore/qpoint.h
 QtCore/qglobal.h
 -
 
+/opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/QMouseEvent
+qevent.h
+/opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qevent.h
+
 /opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/QSurfaceFormat
 qsurfaceformat.h
 /opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qsurfaceformat.h
@@ -1246,6 +1254,14 @@ QtGui/qcolor.h
 QtGui/qbrush.h
 -
 
+/opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpen.h
+QtGui/qtguiglobal.h
+-
+QtGui/qcolor.h
+-
+QtGui/qbrush.h
+-
+
 /opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpixelformat.h
 QtGui/qtguiglobal.h
 -
@@ -1308,6 +1324,62 @@ QtGui/qtguiglobal.h
 QtCore/qpair.h
 -
 QtCore/qobjectdefs.h
+-
+
+/opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextcursor.h
+QtGui/qtguiglobal.h
+-
+QtCore/qstring.h
+-
+QtCore/qshareddata.h
+-
+QtGui/qtextformat.h
+-
+
+/opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextdocument.h
+QtGui/qtguiglobal.h
+-
+QtCore/qobject.h
+-
+QtCore/qsize.h
+-
+QtCore/qrect.h
+-
+QtCore/qvariant.h
+-
+QtGui/qfont.h
+-
+QtCore/qurl.h
+-
+
+/opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextformat.h
+QtGui/qtguiglobal.h
+-
+QtGui/qcolor.h
+-
+QtGui/qfont.h
+-
+QtCore/qshareddata.h
+-
+QtCore/qvector.h
+-
+QtCore/qvariant.h
+-
+QtGui/qpen.h
+-
+QtGui/qbrush.h
+-
+QtGui/qtextoption.h
+-
+
+/opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextoption.h
+QtGui/qtguiglobal.h
+-
+QtCore/qnamespace.h
+-
+QtCore/qchar.h
+-
+QtCore/qmetatype.h
 -
 
 /opt/Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtgui-config.h
@@ -1408,6 +1480,10 @@ qpushbutton.h
 qslider.h
 /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qslider.h
 
+/opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QTextBrowser
+qtextbrowser.h
+/opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtextbrowser.h
+
 /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QWidget
 qwidget.h
 /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qwidget.h
@@ -1428,6 +1504,12 @@ QtWidgets/qtwidgetsglobal.h
 QtCore/qobject.h
 -
 QtWidgets/qstyleoption.h
+-
+
+/opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractscrollarea.h
+QtWidgets/qtwidgetsglobal.h
+-
+QtWidgets/qframe.h
 -
 
 /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractslider.h
@@ -1594,6 +1676,28 @@ QtWidgets/qtwidgetsglobal.h
 QtWidgets/qwidget.h
 -
 QtGui/qicon.h
+-
+
+/opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtextbrowser.h
+QtWidgets/qtwidgetsglobal.h
+-
+QtWidgets/qtextedit.h
+-
+QtCore/qurl.h
+-
+
+/opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtextedit.h
+QtWidgets/qtwidgetsglobal.h
+-
+QtWidgets/qabstractscrollarea.h
+-
+QtGui/qtextdocument.h
+-
+QtGui/qtextoption.h
+-
+QtGui/qtextcursor.h
+-
+QtGui/qtextformat.h
 -
 
 /opt/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtwidgets-config.h
@@ -4060,6 +4164,18 @@ vtkRenderingCoreModule.h
 vtkAbstractMapper.h
 /usr/local/include/vtk-8.2/vtkAbstractMapper.h
 
+/usr/local/include/vtk-8.2/vtkAbstractPicker.h
+vtkRenderingCoreModule.h
+/usr/local/include/vtk-8.2/vtkRenderingCoreModule.h
+vtkObject.h
+/usr/local/include/vtk-8.2/vtkObject.h
+
+/usr/local/include/vtk-8.2/vtkAbstractPropPicker.h
+vtkRenderingCoreModule.h
+/usr/local/include/vtk-8.2/vtkRenderingCoreModule.h
+vtkAbstractPicker.h
+/usr/local/include/vtk-8.2/vtkAbstractPicker.h
+
 /usr/local/include/vtk-8.2/vtkActor.h
 vtkRenderingCoreModule.h
 /usr/local/include/vtk-8.2/vtkRenderingCoreModule.h
@@ -4550,6 +4666,12 @@ set
 string
 -
 
+/usr/local/include/vtk-8.2/vtkPicker.h
+vtkRenderingCoreModule.h
+/usr/local/include/vtk-8.2/vtkRenderingCoreModule.h
+vtkAbstractPropPicker.h
+/usr/local/include/vtk-8.2/vtkAbstractPropPicker.h
+
 /usr/local/include/vtk-8.2/vtkPointData.h
 vtkCommonDataModelModule.h
 /usr/local/include/vtk-8.2/vtkCommonDataModelModule.h
@@ -4978,6 +5100,8 @@ QtWidgets/QLabel
 QtWidgets/QPushButton
 -
 QtWidgets/QSlider
+-
+QtWidgets/QTextBrowser
 -
 QtWidgets/QWidget
 -

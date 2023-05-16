@@ -1,0 +1,4 @@
+/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/build/CMakeFiles/rebuild_cache.dir
+/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/build/CMakeFiles/edit_cache.dir
+/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/build/CMakeFiles/match.dir
+/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/build/CMakeFiles/fusion.dir

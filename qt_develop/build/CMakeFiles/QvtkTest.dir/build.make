@@ -66,7 +66,7 @@ QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp: ../icons/icon.jpg
 QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp: ../icons/polyu.jpg
 QvtkTest_autogen/EWIEGA46WW/qrc_images.cpp: /opt/Qt5.14.2/5.14.2/gcc_64/bin/rcc
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic RCC for images.qrc"
-	/usr/bin/cmake -E cmake_autorcc /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/CMakeFiles/QvtkTest_autogen.dir/AutoRcc_images_EWIEGA46WW_Info.json Debug
+	/usr/bin/cmake -E cmake_autorcc /home/gg/Downloads/calibcpp/thermal_pointcloud/thermal_pointcloud/qt_develop/build/CMakeFiles/QvtkTest_autogen.dir/AutoRcc_images_EWIEGA46WW_Info.json 
 
 CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.o: CMakeFiles/QvtkTest.dir/flags.make
 CMakeFiles/QvtkTest.dir/QvtkTest_autogen/mocs_compilation.cpp.o: QvtkTest_autogen/mocs_compilation.cpp

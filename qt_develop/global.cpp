@@ -6,5 +6,5 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr point_cloud_ptr (new pcl::PointCloud<pcl:
 bool shouldStop = false;
 
 // default temperature threshold
-float temp_threshold = 100;
+float temp_threshold = 190;
 

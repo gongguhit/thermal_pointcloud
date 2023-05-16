@@ -56,8 +56,8 @@ QvtkTest::QvtkTest(QWidget *parent) : QWidget(parent) {
   pcl::visualization::PointCloudColorHandlerRGBField<pcl::PointXYZRGB> rgb(
       point_cloud_ptr);
 
-//  viewer->addCoordinateSystem(1.0);
-  viewer->initCameraParameters();
+
+//  viewer->initCameraParameters();
 
   // Here to attempt automatic refreshing pointcloud 22/April
 
@@ -65,33 +65,52 @@ QvtkTest::QvtkTest(QWidget *parent) : QWidget(parent) {
   connect(timer,&QTimer::timeout,this,[=](){QvtkTest::updateOpenGLWidget(viewer,point_cloud_ptr);});
   timer->start(30);
 
+
   // connect push_button
 
 //  connect(ui.pushButton_pcd,&QPushButton::clicked,this,[=](){QvtkTest::thermal_rs_stream(point_cloud_ptr);});
   connect(ui.pushButton_pcd,&QPushButton::clicked,this,[=](){QvtkTest::slotPushButtonPcd();});
   connect(ui.pushButton_stop,&QPushButton::clicked,this,[=](){QvtkTest::thermal_rs_stream_close();});
+// pcd visualization thread pointer
+  pcdvis_thread = nullptr;
 
- // set slider range
-  ui.horizontalSlider_thresh->setMaximum(140);
-  ui.horizontalSlider_thresh->setMinimum(0);
+  // reset camera button
+  connect(ui.pushButton_resetpsp,&QPushButton::clicked,this,[=](){QvtkTest::on_resetCameraPerspective_clicked(viewer);});
+  // perspection move buttons
+  connect(ui.pushButton_up,&QPushButton::clicked,this,[=](){QvtkTest::on_pspup_clicked(viewer);});
+  connect(ui.pushButton_down,&QPushButton::clicked,this,[=](){QvtkTest::on_pspdown_clicked(viewer);});
+  connect(ui.pushButton_left,&QPushButton::clicked,this,[=](){QvtkTest::on_pspleft_clicked(viewer);});
+  connect(ui.pushButton_right,&QPushButton::clicked,this,[=](){QvtkTest::on_pspright_clicked(viewer);});
+  connect(ui.pushButton_zoomin,&QPushButton::clicked,this,[=](){QvtkTest::on_pspzoomin_clicked(viewer);});
+  connect(ui.pushButton_zoomout,&QPushButton::clicked,this,[=](){QvtkTest::on_pspzoomout_clicked(viewer);});
+
+ // set slider initial value
+  ui.horizontalSlider_thresh->setMaximum(410);
+  ui.horizontalSlider_thresh->setMinimum(160);
+  ui.horizontalSlider_thresh->setValue(360);
+  // set LcdNumber initial value and format
+  ui.lcdNumber_thresh->setMode(QLCDNumber::Dec);
+  ui.lcdNumber_thresh->setDigitCount(4);
+  ui.lcdNumber_thresh->setSmallDecimalPoint(false);
+  ui.lcdNumber_thresh->display(36.0);
+
+
   // connect threshold sliders to the function
   connect(ui.horizontalSlider_thresh,SIGNAL(valueChanged (int)),this,SLOT(tempSliderValueChanged(int)));
   connect(ui.horizontalSlider_thresh,SIGNAL(sliderReleased()),this,SLOT(tempsliderReleased()));
+  // connect slider output to the lcdnumber widget
 
   // add exectue python button
   connect(ui.pushButton_py, SIGNAL(clicked()), this, SLOT(on_runScriptButton_clicked()));
 
-
-  // set framerate = 20
-
-
-  // simply visualize the sample clouds
-//  viewer->removeAllPointClouds();
-//  viewer->addPointCloud<pcl::PointXYZRGB>(point_cloud_ptr, rgb, "sample cloud");
-//  viewer->setPointCloudRenderingProperties(
-//      pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3, "sample cloud");
-//  ui.openGLWidget->update();
-
+  // interaction function
+  ui.openGLWidget->setMouseTracking(true);
+  ui.openGLWidget->setFocusPolicy(Qt::StrongFocus);
+  ui.openGLWidget->installEventFilter(this);
+}
+void QvtkTest::lcdvis(int value)
+{
+    ui.lcdNumber_thresh->display(QString::number(double(value)/10.0f, 'f', 1));
 }
 
 void QvtkTest::initialVtkWidget() {
@@ -99,7 +118,11 @@ void QvtkTest::initialVtkWidget() {
   vtkNew<vtkGenericOpenGLRenderWindow> window;
   window->AddRenderer(viewer->getRendererCollection()->GetFirstRenderer());
   ui.openGLWidget->SetRenderWindow(window.Get());
-  viewer->setCameraPosition(-20,20,-20,0,0,0,0);
+//  viewer->setCameraPosition(0, 0, -5, -5, -5, 5, 0);
+//  viewer->setCameraPosition(0,0,-5,0,0,5,0,-0.01,1);
+  viewer->setCameraPosition(-1,-1,-5,-1,-1,5,0,-0.01,1);
+
+  viewer->addCoordinateSystem(1.0);
   viewer->setupInteractor(ui.openGLWidget->GetInteractor(),
                           ui.openGLWidget->GetRenderWindow());
 //  ui.openGLWidget->update();
@@ -120,14 +143,21 @@ void QvtkTest::updateOpenGLWidget(boost::shared_ptr<pcl::visualization::PCLVisua
 }
 
 void thermal_rs_stream_thread(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_cloud_ptr){
+    int ret;
     int fd;
     struct v4l2_capability cap;
     long frame=0;     // First frame number enumeration
     char video[20];   // To store Video Port Device
+    char label[50];   // To display the information
     char thermal_sensor_name[20];  // To store the sensor name
+    char filename[60];  // PATH/File_count
+    char folder_name[30];  // To store the folder name
+    char video_frames_str[30];
     // Default Program options
     int  video_mode=RAW16;
     int  video_frames=0;
+    int  zoom_enable=0;
+    int  record_enable=0;
     sensor_types my_thermal=Boson320;
 
     //input calibration data
@@ -148,7 +178,10 @@ void thermal_rs_stream_thread(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_clou
     Rodrigues(relative_R,relative_Rvct);
 
 
-
+    float fx = rgbIntrinsic.at<double>(0,0);
+    float fy = rgbIntrinsic.at<double>(1,1);
+    float cx = rgbIntrinsic.at<double>(0,2);
+    float cy = rgbIntrinsic.at<double>(1,2);
 
     // To record images
     std::vector<int> compression_params;
@@ -158,13 +191,20 @@ void thermal_rs_stream_thread(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_clou
     // Video device by default
     sprintf(video, "/dev/video8");
     sprintf(thermal_sensor_name, "Boson_320");
-
-    // import boson camera parameter
-    video_mode = RAW16;
+    video_mode=RAW16;
     my_thermal=Boson320;
     sprintf(thermal_sensor_name, "Boson_320");
-    int width=320;
-    int height=256;
+
+
+    // Folder name
+    if (record_enable==1) {
+        if ( strlen(folder_name)<=1 ) {  // File name has to be more than two chars
+            strcpy(folder_name, thermal_sensor_name);
+        }
+        mkdir(folder_name, 0700);
+        chdir(folder_name);
+        printf(WHT ">>> Folder " YEL "%s" WHT " selected to record files\n", folder_name);
+    }
 
     // Printf Sensor defined
     printf(WHT ">>> " YEL "%s" WHT " selected\n", thermal_sensor_name);
@@ -225,12 +265,10 @@ void thermal_rs_stream_thread(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_clou
     format.fmt.pix.height = height;
 
     // request desired FORMAT
-//    if(ioctl(fd, VIDIOC_S_FMT, &format) < 0){
-//        perror(RED "VIDIOC_S_FMT" WHT);
-//        exit(1);
-//    }
-
-    qDebug() << "check point 1";
+    if(ioctl(fd, VIDIOC_S_FMT, &format) < 0){
+        perror(RED "VIDIOC_S_FMT" WHT);
+        exit(1);
+    }
 
     // we need to inform the device about buffers to use.
     // and we need to allocate them.
@@ -246,7 +284,6 @@ void thermal_rs_stream_thread(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_clou
         perror(RED "VIDIOC_REQBUFS" WHT);
         exit(1);
     }
-    qDebug() << "check point 2";
 
     // Now that the device knows how to provide its data,
     // we need to ask it about the amount of memory it needs,
@@ -264,8 +301,6 @@ void thermal_rs_stream_thread(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_clou
         perror(RED "VIDIOC_QUERYBUF" WHT);
         exit(1);
     }
-
-    qDebug() << "check point 3";
 
 
     // map fd+offset into a process location (kernel will decide due to our NULL). lenght and
@@ -316,7 +351,6 @@ void thermal_rs_stream_thread(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_clou
     color_space = CV_8UC1;
     Mat thermal_luma(luma_height, luma_width,  color_space, buffer_start);  // OpenCV input buffer
     Mat thermal_rgb(height, width, CV_8UC3, 1);    // OpenCV output buffer , BGR -> Three color spaces (640 - 640 - 640 : p11 p21 p31 .... / p12 p22 p32 ..../ p13 p23 p33 ...)
-
     // start to read realsense d455
 
     // 深度图像颜色
@@ -452,9 +486,9 @@ void thermal_rs_stream_thread(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_clou
         cvtColor(aligned_color_image, aligned_color_image, COLOR_RGB2BGR);
 
 
-
-        // try not to make new cv::Mat in each loop
-        // same as above
+//        cv::namedWindow("test_boson_origin");
+//        cv::imshow("test_boson_origin",thermal16_linear);
+//        cv::waitKey(0);
 
         thermal_data = thermal16_linear.clone();
         cv::resize(thermal_data,thermal_data,Size(640,480));
@@ -480,12 +514,22 @@ void thermal_rs_stream_thread(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_clou
 
         bad_obj_points = gen_bad_points(real_point3d);
 
+//        cv::namedWindow("test_boson");
+//        cv::imshow("test_boson",thermal_data);
+//        cv::waitKey(0);
+
 
         projectPoints(real_point3d, relative_Rvct, relative_T, thermalIntrinsic, thermalDistortion, imagePoints);
 
         imagePoints_int = Pointf2i(imagePoints);
 
+        // need to extract this projected image
+
         projected_image = testfunc(imagePoints_int,thermal_data,bad_obj_points);
+
+//        cv::namedWindow("test_projected");
+//        cv::imshow("test_projected",projected_image);
+//        cv::waitKey(0);
 
         // detect the thermal region
         cut_wrong_edge(projected_image,100,380,150,490);
@@ -532,6 +576,10 @@ void thermal_rs_stream_thread(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_clou
         create_new_Mat(temp_colormap,cut_img,100,380,150,490);
         create_new_Mat_depth(aligned_depth_image,cut_depth,100,380,150,490);
 
+//        cv::namedWindow("test_2d");
+//        cv::imshow("test_2d",cut_img);
+//        cv::waitKey(0);
+
 //        qDebug() << "image processing ends";
 
         pcl_generator(point_cloud_ptr,cut_img,cut_depth);
@@ -542,6 +590,7 @@ void thermal_rs_stream_thread(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_clou
     while(!pcd_viewer_running){
      qDebug() << "run into camera close";
      // close boson
+     ret = ioctl (fd,VIDIOC_STREAMOFF,&type);
      close(fd);
      qDebug() << "boson closed successful";
     // close realsense
@@ -556,13 +605,17 @@ void thermal_rs_stream_thread(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_clou
 void QvtkTest::tempsliderReleased()
 {
     // set new threshold
-    temp_threshold = float(temperature);
+    temp_threshold = float(10*temperature-160);
+//    temp_threshold = float(temperature);
 //    qDebug() << temp_threshold;
 }
 void QvtkTest::tempSliderValueChanged(int value)
 {
-    temperature = value;
+    temperature = value/10.0f;
 //    qDebug() << temperature;
+    double lcdValue = static_cast<double>(value)/10.0;
+    QString displayValue = QString::number(lcdValue,'f',1);
+    ui.lcdNumber_thresh->display(displayValue);
 }
 
 // python script button
@@ -575,3 +628,114 @@ void QvtkTest::on_runScriptButton_clicked(){
     myProcess->waitForFinished();
     QString output = myProcess->readAllStandardOutput();
 }
+// perspective control buttons
+void QvtkTest::on_resetCameraPerspective_clicked(boost::shared_ptr<pcl::visualization::PCLVisualizer> &viewer){
+    viewer->setCameraPosition(-1,-1,-5,-1,-1,5,0,-0.01,1);
+}
+void QvtkTest::on_pspup_clicked(boost::shared_ptr<pcl::visualization::PCLVisualizer> &viewer){
+    viewer->getCameraParameters(camera);
+    cam_x = camera.pos[0];
+    cam_y = camera.pos[1];
+    cam_z = camera.pos[2];
+    cam_view0 = camera.focal[0];
+    cam_view1 = camera.focal[1];
+    cam_view2 = camera.focal[2];
+    cam_y -= 0.1;
+    cam_view1 -= 0.1;
+    viewer->setCameraPosition(cam_x,cam_y,cam_z,cam_view0,cam_view1,cam_view2,0,-0.01,1);
+}
+void QvtkTest::on_pspdown_clicked(boost::shared_ptr<pcl::visualization::PCLVisualizer> &viewer){
+    viewer->getCameraParameters(camera);
+    cam_x = camera.pos[0];
+    cam_y = camera.pos[1];
+    cam_z = camera.pos[2];
+    cam_view0 = camera.focal[0];
+    cam_view1 = camera.focal[1];
+    cam_view2 = camera.focal[2];
+    cam_y += 0.1;
+    cam_view1 += 0.1;
+    viewer->setCameraPosition(cam_x,cam_y,cam_z,cam_view0,cam_view1,cam_view2,0,-0.01,1);
+}
+void QvtkTest::on_pspleft_clicked(boost::shared_ptr<pcl::visualization::PCLVisualizer> &viewer){
+    viewer->getCameraParameters(camera);
+    cam_x = camera.pos[0];
+    cam_y = camera.pos[1];
+    cam_z = camera.pos[2];
+    cam_view0 = camera.focal[0];
+    cam_view1 = camera.focal[1];
+    cam_view2 = camera.focal[2];
+    cam_x -= 0.1;
+    cam_view0 -= 0.1;
+    viewer->setCameraPosition(cam_x,cam_y,cam_z,cam_view0,cam_view1,cam_view2,0,-0.01,1);
+}
+void QvtkTest::on_pspright_clicked(boost::shared_ptr<pcl::visualization::PCLVisualizer> &viewer){
+    viewer->getCameraParameters(camera);
+    cam_x = camera.pos[0];
+    cam_y = camera.pos[1];
+    cam_z = camera.pos[2];
+    cam_view0 = camera.focal[0];
+    cam_view1 = camera.focal[1];
+    cam_view2 = camera.focal[2];
+    cam_x += 0.1;
+    cam_view0 += 0.1;
+    viewer->setCameraPosition(cam_x,cam_y,cam_z,cam_view0,cam_view1,cam_view2,0,-0.01,1);
+}
+void QvtkTest::on_pspzoomin_clicked(boost::shared_ptr<pcl::visualization::PCLVisualizer> &viewer){
+    viewer->getCameraParameters(camera);
+    cam_x = camera.pos[0];
+    cam_y = camera.pos[1];
+    cam_z = camera.pos[2];
+    cam_view0 = camera.focal[0];
+    cam_view1 = camera.focal[1];
+    cam_view2 = camera.focal[2];
+    cam_z += 0.5;
+    viewer->setCameraPosition(cam_x,cam_y,cam_z,cam_view0,cam_view1,cam_view2,0,-0.01,1);
+}
+void QvtkTest::on_pspzoomout_clicked(boost::shared_ptr<pcl::visualization::PCLVisualizer> &viewer){
+    viewer->getCameraParameters(camera);
+    cam_x = camera.pos[0];
+    cam_y = camera.pos[1];
+    cam_z = camera.pos[2];
+    cam_view0 = camera.focal[0];
+    cam_view1 = camera.focal[1];
+    cam_view2 = camera.focal[2];
+    cam_z -= 0.5;
+    viewer->setCameraPosition(cam_x,cam_y,cam_z,cam_view0,cam_view1,cam_view2,0,-0.01,1);
+}
+
+
+//interaction function
+bool QvtkTest::eventFilter(QObject *obj, QEvent *event){
+    if (obj == ui.openGLWidget && event->type() == QEvent::MouseButtonPress)
+        {
+            QMouseEvent *mouseEvent = dynamic_cast<QMouseEvent *>(event);
+            if (mouseEvent && mouseEvent->button() == Qt::LeftButton && mouseEvent->modifiers() == Qt::ShiftModifier)
+            {
+                int x = mouseEvent->x();
+                int y = mouseEvent->y();
+                pcl::PointXYZ point;
+                vtkSmartPointer<vtkRenderWindowInteractor> interactor = ui.openGLWidget->GetInteractor();
+                if (interactor) {
+                                vtkSmartPointer<vtkRendererCollection> renderers = interactor->GetRenderWindow()->GetRenderers();
+                                vtkSmartPointer<vtkPicker> picker = vtkSmartPointer<vtkPicker>::New();
+                                picker->Pick(x, y, 0, renderers->GetFirstRenderer());
+                                double* picked = picker->GetPickPosition();
+                                point.x = picked[0];
+                                point.y = picked[1];
+                                point.z = picked[2];
+
+                                qDebug() << "Successfully picked up a point";
+
+                                QString text = QString("X: %1\nY: %2\nZ: %3\n").arg(point.x).arg(point.y).arg(point.z);
+                                ui.textBrowser->setText(text);
+
+                                // Display point x, y, z information using appropriate widgets in main window
+                                // ...
+                                return true;
+                            }
+                        }
+                    }
+                    return false;
+}
+
+

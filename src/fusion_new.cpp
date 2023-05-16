@@ -400,6 +400,9 @@ int main(int argc, char** argv )
 
         // try not to make new cv::Mat in each loop 
         // same as above
+        cv::namedWindow("test_boson_raw");
+        cv::imshow("test_boson_raw",thermal16_linear);
+        cv::waitKey(0);
 
         thermal_data = thermal16_linear.clone();
         resize(thermal_data,thermal_data,Size(640,480));

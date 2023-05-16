@@ -19,7 +19,7 @@
 					]
 				}
 			],
-			"name" : "Debug",
+			"name" : "",
 			"projects" : 
 			[
 				{
@@ -40,14 +40,14 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "QvtkTest::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-QvtkTest-Debug-e5f4149996dfc2a17f7a.json",
+					"jsonFile" : "target-QvtkTest-b7f7f7e2754b1272d004.json",
 					"name" : "QvtkTest",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "QvtkTest_autogen::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-QvtkTest_autogen-Debug-acc1a5ee2825ebe824ad.json",
+					"jsonFile" : "target-QvtkTest_autogen-acc1a5ee2825ebe824ad.json",
 					"name" : "QvtkTest_autogen",
 					"projectIndex" : 0
 				}
