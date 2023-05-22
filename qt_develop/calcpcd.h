@@ -325,7 +325,7 @@ void pclPointToUV(pcl::PointXYZ point, int& thermal_u, int& thermal_v,cv::Mat th
     thermal_v = static_cast<int>(std::round(y * fy / z + cy));
 
     if ((thermal_u < 340) && (thermal_v < 280) && (thermal_u > 0) && (thermal_u > 0)){
-        temp_text = (thermal_uchar_cut.at<uchar>(thermal_u,thermal_v) + 160.0)/10.0;
+        temp_text = (thermal_uchar_cut.at<uchar>(thermal_u,thermal_v) + 230.0)/10.0;
     }
 }
 
