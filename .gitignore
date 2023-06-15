@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+
+# building folders
+build
+cmake-build-debug
+qt_develop/build
+
+# calibration photos
+calibration/test_data
+calibration/test_data_2

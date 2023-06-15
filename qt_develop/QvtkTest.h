@@ -16,6 +16,8 @@
 #include <QProcess>
 #include <QMouseEvent>
 #include <vtkPicker.h>
+#include <iostream>
+#include <fstream>
 
 //external function
 void thermal_rs_stream_thread(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &point_cloud_ptr,cv::Mat &thermal_uchar_cut);

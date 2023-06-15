@@ -15,7 +15,6 @@ SET (PROJECT_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/include")
 find_package(OpenCV REQUIRED)
 find_package(PCL 1.11 REQUIRED)
 find_package(realsense2 REQUIRED)
-find_package(Eigen3 REQUIRED)
 
 
 # Include directories ---------------------------------------------------------

@@ -321,6 +321,10 @@ int main(int argc, char** argv )
     vector<Point3d> real_point3d;
     vector<Point2i> imagePoints_int;
 
+    // save pcd count
+
+    int pcd_count = 0;
+
     // Main loop
     for (;;) {
 
@@ -400,9 +404,9 @@ int main(int argc, char** argv )
 
         // try not to make new cv::Mat in each loop 
         // same as above
-        cv::namedWindow("test_boson_raw");
-        cv::imshow("test_boson_raw",thermal16_linear);
-        cv::waitKey(0);
+//        cv::namedWindow("test_boson_raw");
+//        cv::imshow("test_boson_raw",thermal16_linear);
+//        cv::waitKey(0);
 
         thermal_data = thermal16_linear.clone();
         resize(thermal_data,thermal_data,Size(640,480));
@@ -523,6 +527,17 @@ int main(int argc, char** argv )
 //        cloud = pcl_generator(temp_colormap,aligned_depth_image);
 //        pcl_generator_mudd(temp_colormap,aligned_depth_image, cloud);
         pcl_generator(cloud,cut_img,cut_depth);
+
+        // save pcd to files
+        if (pcd_count == 10){
+            pcd_count = 0;
+        }
+        int ch;
+        ch = get_char();
+        if(ch==115)
+        {
+            save_cloud(cloud,pcd_count);
+        }
 
         // add filter
         pass.setInputCloud(cloud);

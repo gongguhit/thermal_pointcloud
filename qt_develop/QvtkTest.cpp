@@ -731,7 +731,15 @@ bool QvtkTest::eventFilter(QObject *obj, QEvent *event){
 
                                 QString text = QString("X: %1\nY: %2\nZ: %3\nTemperature: %4\n").arg(point.x).arg(point.y).arg(point.z).arg(temp_text);
                                 ui.textBrowser->setText(text);
-
+                            // write point data to a log file
+                            std::ofstream outputFile("/home/emrys/Project/Qt_project/thermal_pointcloud-main/qt_develop/data.txt", std::ios::app); // 打开文件，并且设置为追加模式
+                            if (outputFile.is_open()) {
+                                outputFile << point.x << " " << point.y << " " << point.z << " " << temp_text << std::endl; // 写入数据
+                                outputFile.close(); // 关闭文件
+                                std::cout << "数据已成功写入文件" << std::endl;
+                            } else {
+                                std::cout << "无法打开文件" << std::endl;
+                            }
                                 // Display point x, y, z information using appropriate widgets in main window
                                 // ...
                                 return true;

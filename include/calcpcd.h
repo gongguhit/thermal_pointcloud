@@ -294,5 +294,15 @@ void pcl_generator_mudd (Mat &rgb, Mat &depth, pcl::PointCloud<pcl::PointXYZRGB>
 
 //    return pointCloud;
 }
+void save_cloud(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cloud, int count){
+    std::cout << "Processing cloud: " << cloud->size() << std::endl;
+    std::string filename = "../savedpcd/cloud_" + std::to_string(count) + ".pcd";
+    if (count == 9){
+        std::cout<< "10 pcd taken";
+    }
+    count ++;
+    pcl::io::savePCDFileASCII(filename, *cloud);
+    std::cout << "Saved cloud file: " << filename << std::endl;
+}
 
 #endif //FUSION_CALCPCD_H

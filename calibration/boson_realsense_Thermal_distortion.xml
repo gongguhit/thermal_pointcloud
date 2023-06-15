@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<opencv_storage>
+<boson_realsense_Thermal_distortion type_id="opencv-matrix">
+  <rows>1</rows>
+  <cols>5</cols>
+  <dt>d</dt>
+  <data>
+    -4.7988967586391240e-01 3.8966016327193859e-01
+    -2.6013217585290618e-03 -9.1506505215123209e-03
+    -2.9495705040966685e-01</data></boson_realsense_Thermal_distortion>
+</opencv_storage>
